@@ -393,7 +393,7 @@ a {
   margin: 0 auto;
   padding: 0 28px;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.25fr 0.85fr;
   gap: 60px;
   align-items: start;
 }
@@ -405,6 +405,7 @@ a {
 
 .hero-visual {
   align-self: start;
+  padding-top: clamp(28px, 4vw, 54px);
 }
 
 .avail-badge {
@@ -691,6 +692,10 @@ a {
   .about-layout {
     grid-template-columns: 1fr;
     gap: 40px;
+
+    .hero-visual {
+      padding-top: 0;
+    }
   }
 }
 
@@ -699,6 +704,7 @@ a {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-top: 28px;
+  
 }
 @media (max-width: 540px) {
   .about-cards {
@@ -1481,6 +1487,7 @@ a {
 @media (max-width: 640px) {
   .section {
     padding: 60px 0;
+    
   }
   .hero {
     padding: 56px 0 68px;
