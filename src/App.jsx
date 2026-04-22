@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FaGithub,
   FaLinkedin,
@@ -24,71 +24,88 @@ import "./App.css";
 const projects = [
   {
     title: "Netflix Clone",
+    tag: "Full-Stack",
     description:
       "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
     tech: ["React", "Node.js", "TMDB API"],
     github: "https://github.com/yourname/netflix-clone",
     demo: "https://netflix-clone.example.com",
+    number: "01",
   },
   {
     title: "Live Chat App",
+    tag: "Real-time",
     description:
       "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
     tech: ["React", "Express", "Socket.IO"],
     github: "https://github.com/yourname/live-chat-app",
     demo: "https://live-chat.example.com",
+    number: "02",
   },
   {
-    title: "Inventory Management System",
+    title: "Inventory Management",
+    tag: "Backend",
     description:
       "Role-based inventory management with analytics dashboard and automated stock alerts.",
     tech: ["Spring Boot", "MySQL", "Docker"],
     github: "https://github.com/yourname/inventory-system",
     demo: "https://inventory.example.com",
+    number: "03",
   },
   {
     title: "Smart Attendance Tracker",
+    tag: "API",
     description:
       "Backend-driven attendance tracker with QR validation and export-ready reports.",
     tech: ["Python", "FastAPI", "MongoDB"],
     github: "https://github.com/yourname/attendance-tracker",
     demo: "https://attendance.example.com",
+    number: "04",
   },
 ];
 
 const certifications = [
   {
-    title: "IBM Backend Development Professional Certificate",
+    title: "IBM Backend Development",
+    subtitle: "Professional Certificate",
     description:
       "Built production-ready APIs, automated tests, and containerized services with Docker.",
+    icon: "🏆",
   },
   {
-    title: "AWS Cloud Practitioner Essentials",
+    title: "AWS Cloud Practitioner",
+    subtitle: "Essentials",
     description:
       "Validated fundamentals in cloud architecture, IAM, and AWS pricing models.",
+    icon: "☁️",
   },
   {
     title: "Google Cloud Foundations",
+    subtitle: "Certification",
     description:
-      "Learned core Google Cloud services, networking, and deployment strategies.",
+      "Core Google Cloud services, networking, and deployment strategies.",
+    icon: "🌐",
   },
 ];
 
 const skillGroups = [
   {
-    title: "Technical Skills",
+    title: "Languages",
     icon: FaCode,
     items: ["JavaScript", "Python", "Java", "PHP"],
+    accent: "#f59e0b",
   },
   {
-    title: "Frameworks & Tools",
+    title: "Frameworks",
     icon: FaServer,
     items: ["React", "Node.js", "Express", "Spring Boot", "Docker"],
+    accent: "#3b82f6",
   },
   {
     title: "Databases",
     icon: FaDatabase,
     items: ["MySQL", "MongoDB"],
+    accent: "#10b981",
   },
 ];
 
@@ -99,362 +116,271 @@ const skillLevels = [
   { name: "Cloud Fundamentals", level: 65 },
 ];
 
-const highlights = [
-  {
-    title: "API-First Engineering",
-    description:
-      "Designing scalable, well-documented APIs with security and performance in mind.",
-    icon: FaServer,
-  },
-  {
-    title: "Quality & Reliability",
-    description:
-      "Testing, monitoring, and clean architecture to keep services stable and maintainable.",
-    icon: FaShieldAlt,
-  },
-  {
-    title: "Cloud-Ready Delivery",
-    description:
-      "Containerized deployments and CI-ready workflows for modern teams.",
-    icon: FaCloud,
-  },
-];
-
 const stats = [
-  { label: "Projects Delivered", value: "12+" },
-  { label: "Certifications", value: "3" },
-  { label: "Tech Stack", value: "10+" },
+  { label: "Projects Delivered", value: "12+", icon: "◈" },
+  { label: "Certifications", value: "3", icon: "◆" },
+  { label: "Tech Stack", value: "10+", icon: "◉" },
 ];
 
 const processSteps = [
   {
     title: "Discover",
     description: "Clarify requirements, constraints, and success metrics.",
+    num: "01",
   },
   {
     title: "Design",
     description: "Model the data, API contracts, and system architecture.",
+    num: "02",
   },
   {
     title: "Build",
     description: "Implement, test, and document reliable backend services.",
+    num: "03",
   },
   {
     title: "Improve",
     description: "Monitor, iterate, and optimize performance over time.",
+    num: "04",
   },
 ];
 
+function useScrollReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("revealed");
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
+  useScrollReveal();
+
   return (
-    <div className="page-bg min-h-screen text-slate-900 transition-colors duration-300 dark:text-slate-100">
-      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/70">
-        <nav className="content-shell flex items-center justify-between py-4">
-          <a
-            href="#home"
-            className="flex items-center gap-2 text-lg font-semibold"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-white shadow-soft dark:bg-white dark:text-slate-900">
-              <HiOutlineSparkles className="text-lg" />
+    <div className={`portfolio-root ${darkMode ? "dark" : ""}`}>
+      {/* ─── HEADER ─── */}
+      <header className="site-header">
+        <nav className="nav-inner">
+          <a href="#home" className="nav-brand">
+            <span className="brand-icon">
+              <HiOutlineSparkles />
             </span>
-            Kasun Udayanga
+            <span className="brand-name">Kasun<span className="brand-dot">.</span></span>
           </a>
-          <div className="hidden items-center gap-6 text-sm font-medium md:flex">
-            <a className="nav-link" href="#about">
-              About
-            </a>
-            <a className="nav-link" href="#skills">
-              Skills
-            </a>
-            <a className="nav-link" href="#projects">
-              Projects
-            </a>
-            <a className="nav-link" href="#experience">
-              Experience
-            </a>
-            <a className="nav-link" href="#contact">
-              Contact
-            </a>
+
+          <div className="nav-links">
+            {["about", "skills", "projects", "experience", "contact"].map((s) => (
+              <a key={s} className="nav-link" href={`#${s}`}>
+                {s.charAt(0).toUpperCase() + s.slice(1)}
+              </a>
+            ))}
           </div>
-          <div className="flex items-center gap-3">
+
+          <div className="nav-actions">
             <button
-              type="button"
-              onClick={() => setDarkMode((prev) => !prev)}
-              className="rounded-full border border-slate-200 p-2 text-slate-700 transition hover:border-slate-300 hover:text-slate-900 dark:border-slate-700 dark:text-slate-200 dark:hover:border-slate-500"
-              aria-label="Toggle dark mode"
+              className="theme-toggle"
+              onClick={() => setDarkMode((p) => !p)}
+              aria-label="Toggle theme"
             >
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
-            <a href="#contact" className="btn-primary hidden sm:inline-flex">
-              Let’s Connect
+            <a href="#contact" className="btn-hire">
+              Hire Me <FaArrowRight />
             </a>
           </div>
         </nav>
       </header>
 
       <main>
-        <section
-          id="home"
-          className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 lg:pt-24"
-        >
-          <div className="hero-glow" />
-          <div className="content-shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div className="space-y-6 text-center lg:text-left">
-              <p className="section-kicker inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 shadow-soft dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-300">
+        {/* ─── HERO ─── */}
+        <section id="home" className="hero-section">
+          <div className="hero-bg-orb orb-1" />
+          <div className="hero-bg-orb orb-2" />
+          <div className="hero-grid-overlay" />
+
+          <div className="hero-inner">
+            <div className="hero-content reveal">
+              <div className="hero-badge">
+                <span className="badge-dot" />
                 Available for Internship
-              </p>
-              <h1 className="text-4xl font-bold leading-tight text-slate-900 dark:text-white sm:text-5xl">
-                Kasun Udayanga
-                <br />
-                <span className="gradient-text">
-                  ICT Undergraduate | Backend Developer
+              </div>
+
+              <h1 className="hero-title">
+                <span className="hero-name">Kasun Udayanga</span>
+                <span className="hero-role">
+                  Backend <em>Developer</em>
                 </span>
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
-                Third-year ICT undergraduate focused on designing reliable
-                backend systems, clean APIs, and scalable data services. I love
-                turning complex requirements into secure, production-ready
-                solutions for real-world users.
+
+              <p className="hero-desc">
+                Third-year ICT undergraduate specializing in scalable backend
+                systems, RESTful APIs, and cloud-ready architectures. Turning
+                complex requirements into elegant, production-grade solutions.
               </p>
-              <div className="btn-group justify-center lg:justify-start">
+
+              <div className="hero-cta">
                 <a href="#projects" className="btn-primary">
-                  View Projects
-                  <FaArrowRight />
+                  View Work <FaArrowRight />
                 </a>
-                <a href="#contact" className="btn-secondary">
-                  Contact Me
+                <a href="#contact" className="btn-ghost">
+                  Let's Talk
                 </a>
               </div>
-              <div className="mt-6 grid justify-items-center gap-3 sm:grid-cols-3 sm:justify-items-start">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="stat-card">
-                    <p className="text-xs font-semibold uppercase text-slate-400">
-                      {stat.label}
-                    </p>
-                    <p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
-                      {stat.value}
-                    </p>
+
+              <div className="hero-stats">
+                {stats.map((s) => (
+                  <div key={s.label} className="stat-item">
+                    <span className="stat-icon">{s.icon}</span>
+                    <span className="stat-value">{s.value}</span>
+                    <span className="stat-label">{s.label}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <div className="card relative overflow-hidden p-6">
-                <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-100 blur-3xl dark:bg-blue-500/20" />
+
+            <div className="hero-visual reveal reveal-right">
+              <div className="hero-card-main">
+                <div className="card-glow" />
                 <img
                   src={heroImage}
-                  alt="Backend developer illustration"
-                  className="relative mx-auto h-52 w-auto object-contain"
+                  alt="Developer illustration"
+                  className="hero-img"
                 />
-                <div className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Focus Areas
-                  </p>
-                  <div className="flex flex-wrap gap-3 text-xs font-semibold text-slate-500">
-                    <span className="chip">REST APIs</span>
-                    <span className="chip">Microservices</span>
-                    <span className="chip">Cloud & DevOps</span>
-                    <span className="chip">Security</span>
+                <div className="hero-focus-tags">
+                  <p className="focus-label">Focus Areas</p>
+                  <div className="focus-chips">
+                    {["REST APIs", "Microservices", "Cloud & DevOps", "Security"].map((t) => (
+                      <span key={t} className="focus-chip">{t}</span>
+                    ))}
                   </div>
                 </div>
               </div>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="card p-5">
-                  <p className="text-xs font-semibold uppercase text-slate-400">
-                    Experience
-                  </p>
-                  <h4 className="mt-2 text-2xl font-semibold">3+ Years</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    Academic + project work
-                  </p>
+              <div className="hero-mini-cards">
+                <div className="mini-card">
+                  <span className="mini-label">Experience</span>
+                  <span className="mini-value">3+ Years</span>
+                  <span className="mini-sub">Academic + projects</span>
                 </div>
-                <div className="card p-5">
-                  <p className="text-xs font-semibold uppercase text-slate-400">
-                    Focus
-                  </p>
-                  <h4 className="mt-2 text-2xl font-semibold">
-                    Backend Systems
-                  </h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    APIs, DBs & integrations
-                  </p>
+                <div className="mini-card">
+                  <span className="mini-label">Focus</span>
+                  <span className="mini-value">Backend</span>
+                  <span className="mini-sub">APIs, DBs & integrations</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="section-block">
-          <div className="content-shell">
-            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-              <div>
-                <p className="section-kicker">About</p>
-                <h2 className="section-title mt-2">About Me</h2>
-                <p className="section-subtitle mt-4">
-                  I am a third-year ICT undergraduate who thrives on backend
-                  engineering and clean system architecture. I enjoy working
-                  with APIs, designing scalable databases, and ensuring
-                  performance and security in every solution I build.
+        {/* ─── ABOUT ─── */}
+        <section id="about" className="section">
+          <div className="container">
+            <div className="section-header reveal">
+              <span className="kicker">About</span>
+              <h2 className="section-title">Crafting reliable systems<br />from the ground up</h2>
+            </div>
+
+            <div className="about-grid">
+              <div className="about-text reveal">
+                <p className="about-para">
+                  I'm a third-year ICT undergraduate who thrives on backend
+                  engineering and clean system architecture. I enjoy working with
+                  APIs, designing scalable databases, and ensuring performance
+                  and security in every solution I build.
                 </p>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  <div className="card p-5">
-                    <h3 className="text-sm font-semibold uppercase text-slate-400">
-                      Skills & Interests
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                      API design, authentication, microservices, cloud
-                      deployment, DevOps automation.
-                    </p>
+                <div className="about-cards">
+                  <div className="about-card">
+                    <h4>Skills & Interests</h4>
+                    <p>API design, authentication, microservices, cloud deployment, DevOps automation.</p>
                   </div>
-                  <div className="card p-5">
-                    <h3 className="text-sm font-semibold uppercase text-slate-400">
-                      Career Objective
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                      Join a product team to deliver reliable backend platforms
-                      and gain real-world internship experience in scalable
-                      systems.
-                    </p>
+                  <div className="about-card">
+                    <h4>Career Objective</h4>
+                    <p>Join a product team to deliver reliable backend platforms and gain real-world internship experience.</p>
                   </div>
                 </div>
               </div>
-              <div className="space-y-6">
-                <div className="card p-6">
-                  <h3 className="text-lg font-semibold">What I Bring</h3>
-                  <ul className="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                    <li className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-slate-900 dark:bg-white" />
+
+              <div className="about-facts reveal reveal-right">
+                <div className="facts-card">
+                  <h3>What I Bring</h3>
+                  <ul className="brings-list">
+                    <li>
+                      <span className="brings-bullet" />
                       Backend-first mindset with clean, documented APIs.
                     </li>
-                    <li className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-slate-900 dark:bg-white" />
+                    <li>
+                      <span className="brings-bullet" />
                       Experience collaborating with UI teams and product owners.
                     </li>
-                    <li className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-slate-900 dark:bg-white" />
+                    <li>
+                      <span className="brings-bullet" />
                       Passion for learning cloud-native and DevOps practices.
                     </li>
                   </ul>
                 </div>
-                <div className="card p-6">
-                  <h3 className="text-lg font-semibold">Quick Facts</h3>
-                  <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="text-slate-400">Location</p>
-                      <p className="font-semibold">Sri Lanka</p>
+                <div className="quick-facts">
+                  {[
+                    { label: "Location", value: "Sri Lanka" },
+                    { label: "Availability", value: "Immediate" },
+                    { label: "Email", value: "kasun.dev@email.com" },
+                    { label: "Focus", value: "Backend & APIs" },
+                  ].map((f) => (
+                    <div key={f.label} className="fact-item">
+                      <span className="fact-label">{f.label}</span>
+                      <span className="fact-value">{f.value}</span>
                     </div>
-                    <div>
-                      <p className="text-slate-400">Availability</p>
-                      <p className="font-semibold">Immediate</p>
-                    </div>
-                    <div>
-                      <p className="text-slate-400">Email</p>
-                      <p className="font-semibold">kasun.dev@email.com</p>
-                    </div>
-                    <div>
-                      <p className="text-slate-400">Focus</p>
-                      <p className="font-semibold">Backend & APIs</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="section-block">
-          <div className="content-shell">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="section-kicker">Why Me</p>
-                <h2 className="section-title mt-2">
-                  Backend Capabilities That Drive Results
-                </h2>
-                <p className="section-subtitle mt-4">
-                  I blend technical depth with product awareness to build
-                  secure, scalable backend services.
-                </p>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                <span className="chip bg-white/80 shadow-soft dark:bg-slate-950">
-                  API Design
-                </span>
-                <span className="chip bg-white/80 shadow-soft dark:bg-slate-950">
-                  Data Modeling
-                </span>
-                <span className="chip bg-white/80 shadow-soft dark:bg-slate-950">
-                  Reliability
-                </span>
-              </div>
+        {/* ─── SKILLS ─── */}
+        <section id="skills" className="section section-alt">
+          <div className="container">
+            <div className="section-header reveal">
+              <span className="kicker">Skills</span>
+              <h2 className="section-title">Technical Expertise</h2>
+              <p className="section-sub">A balanced mix of backend engineering, tooling, and data management.</p>
             </div>
-            <div className="mt-10 grid gap-5 lg:grid-cols-3">
-              {highlights.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="card card-hover p-6">
-                    <div className="flex items-center gap-3">
-                      <span className="icon-badge">
-                        <Icon />
-                      </span>
-                      <h3 className="text-lg font-semibold">{item.title}</h3>
-                    </div>
-                    <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
-        <section
-          id="skills"
-          className="section-block bg-slate-100/70 dark:bg-slate-900/60"
-        >
-          <div className="content-shell">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="section-kicker">Skills</p>
-                <h2 className="section-title mt-2">Technical Expertise</h2>
-                <p className="section-subtitle mt-4">
-                  A balanced mix of backend engineering, tooling, and data
-                  management skills.
-                </p>
-              </div>
-              <div className="flex gap-2 text-xs font-semibold text-slate-500">
-                <span className="chip bg-white/80 shadow-soft dark:bg-slate-950">
-                  APIs
-                </span>
-                <span className="chip bg-white/80 shadow-soft dark:bg-slate-950">
-                  Cloud
-                </span>
-                <span className="chip bg-white/80 shadow-soft dark:bg-slate-950">
-                  DevOps
-                </span>
-              </div>
-            </div>
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
-              {skillGroups.map((group) => {
+            <div className="skills-grid">
+              {skillGroups.map((group, i) => {
                 const Icon = group.icon;
                 return (
-                  <div key={group.title} className="card card-hover p-6">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-soft dark:bg-white dark:text-slate-900">
+                  <div
+                    key={group.title}
+                    className="skill-card reveal"
+                    style={{ "--accent": group.accent, animationDelay: `${i * 0.1}s` }}
+                  >
+                    <div className="skill-card-header">
+                      <span className="skill-icon" style={{ color: group.accent }}>
                         <Icon />
                       </span>
-                      <h3 className="text-lg font-semibold">{group.title}</h3>
+                      <h3>{group.title}</h3>
                     </div>
-                    <ul className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                    <ul className="skill-list">
                       {group.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
+                        <li key={item} className="skill-item">
+                          <span className="skill-dot" style={{ background: group.accent }} />
                           {item}
                         </li>
                       ))}
@@ -463,21 +389,20 @@ function App() {
                 );
               })}
             </div>
-            <div className="card mt-10 grid gap-4 p-6">
-              <h3 className="text-lg font-semibold">Core Strengths</h3>
-              <div className="grid gap-4 sm:grid-cols-2">
+
+            <div className="strengths-panel reveal">
+              <h3>Core Strengths</h3>
+              <div className="strengths-grid">
                 {skillLevels.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex items-center justify-between text-sm">
+                  <div key={skill.name} className="strength-item">
+                    <div className="strength-header">
                       <span>{skill.name}</span>
-                      <span className="font-semibold text-slate-500 dark:text-slate-300">
-                        {skill.level}%
-                      </span>
+                      <span className="strength-pct">{skill.level}%</span>
                     </div>
-                    <div className="mt-2 h-2 rounded-full bg-slate-200 dark:bg-slate-800">
+                    <div className="strength-track">
                       <div
-                        className="h-2 rounded-full bg-slate-900 transition-all duration-500 dark:bg-white"
-                        style={{ width: `${skill.level}%` }}
+                        className="strength-bar"
+                        style={{ "--w": `${skill.level}%` }}
                       />
                     </div>
                   </div>
@@ -487,259 +412,196 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" className="section-block">
-          <div className="content-shell">
-            <div className="flex flex-wrap items-end justify-between gap-6">
+        {/* ─── PROJECTS ─── */}
+        <section id="projects" className="section">
+          <div className="container">
+            <div className="section-header-row reveal">
               <div>
-                <p className="section-kicker">Projects</p>
-                <h2 className="section-title mt-2">Selected Work</h2>
-                <p className="section-subtitle mt-4">
-                  A selection of backend-focused projects that highlight my
-                  technical range.
-                </p>
+                <span className="kicker">Projects</span>
+                <h2 className="section-title">Selected Work</h2>
+                <p className="section-sub">Backend-focused projects that highlight my technical range.</p>
               </div>
-              <a
-                href="https://github.com/yourname"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-300"
-              >
-                View GitHub
-                <FaExternalLinkAlt className="text-xs" />
+              <a href="https://github.com/yourname" className="link-github">
+                <FaGithub /> View All on GitHub <FaExternalLinkAlt className="ext-icon" />
               </a>
             </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {projects.map((project) => (
-                <article key={project.title} className="card card-hover p-6">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                    {project.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="chip dark:bg-slate-800">
-                        {tech}
-                      </span>
+
+            <div className="projects-grid">
+              {projects.map((project, i) => (
+                <article
+                  key={project.title}
+                  className="project-card reveal"
+                  style={{ animationDelay: `${i * 0.08}s` }}
+                >
+                  <div className="project-number">{project.number}</div>
+                  <div className="project-tag">{project.tag}</div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-desc">{project.description}</p>
+                  <div className="project-tech">
+                    {project.tech.map((t) => (
+                      <span key={t} className="tech-chip">{t}</span>
                     ))}
                   </div>
-                  <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
-                    <a
-                      href={project.github}
-                      className="inline-flex items-center gap-2 text-slate-700 transition hover:text-slate-900 dark:text-slate-300"
-                    >
-                      <FaGithub /> GitHub
+                  <div className="project-links">
+                    <a href={project.github} className="proj-link">
+                      <FaGithub /> Code
                     </a>
-                    <a
-                      href={project.demo}
-                      className="inline-flex items-center gap-2 text-slate-700 transition hover:text-slate-900 dark:text-slate-300"
-                    >
-                      <FaExternalLinkAlt className="text-xs" /> Live Demo
+                    <a href={project.demo} className="proj-link proj-link-demo">
+                      <FaExternalLinkAlt /> Demo
                     </a>
                   </div>
+                  <div className="project-accent" />
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          id="experience"
-          className="section-block bg-slate-100/70 dark:bg-slate-900/60"
-        >
-          <div className="content-shell">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="section-kicker">Experience</p>
-                <h2 className="section-title mt-2">
-                  Experience & Certifications
-                </h2>
-                <p className="section-subtitle mt-4">
-                  Certifications and academic projects that reflect continuous
-                  learning.
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-slate-500 shadow-soft dark:bg-slate-950">
-                <FaCertificate /> 3 Certifications
-              </span>
+        {/* ─── EXPERIENCE ─── */}
+        <section id="experience" className="section section-alt">
+          <div className="container">
+            <div className="section-header reveal">
+              <span className="kicker">Experience</span>
+              <h2 className="section-title">Certifications & Process</h2>
+              <p className="section-sub">Continuous learning reflected in credentials and a proven workflow.</p>
             </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {certifications.map((cert) => (
-                <div key={cert.title} className="card card-hover p-6">
-                  <h3 className="text-lg font-semibold">{cert.title}</h3>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                    {cert.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10 grid gap-4 lg:grid-cols-4">
-              {processSteps.map((step, index) => (
-                <div key={step.title} className="card p-5">
-                  <div className="flex items-center justify-between text-xs font-semibold uppercase text-slate-400">
-                    <span>Step {index + 1}</span>
-                    <FaChartLine />
+
+            <div className="certs-grid">
+              {certifications.map((cert, i) => (
+                <div
+                  key={cert.title}
+                  className="cert-card reveal"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <div className="cert-icon">{cert.icon}</div>
+                  <div className="cert-badge">
+                    <FaCertificate /> Certified
                   </div>
-                  <h4 className="mt-3 text-lg font-semibold">{step.title}</h4>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                    {step.description}
-                  </p>
+                  <h3 className="cert-title">{cert.title}</h3>
+                  <p className="cert-subtitle">{cert.subtitle}</p>
+                  <p className="cert-desc">{cert.description}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="process-track reveal">
+              <h3 className="process-heading">How I Work</h3>
+              <div className="process-steps">
+                {processSteps.map((step, i) => (
+                  <div key={step.title} className="process-step">
+                    <div className="step-num">{step.num}</div>
+                    {i < processSteps.length - 1 && <div className="step-line" />}
+                    <h4 className="step-title">{step.title}</h4>
+                    <p className="step-desc">{step.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="section-block">
-          <div className="content-shell">
-            <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-              <div>
-                <p className="section-kicker">Contact</p>
-                <h2 className="section-title mt-2">Let’s Connect</h2>
-                <p className="section-subtitle mt-4">
-                  Have an internship opportunity or a backend challenge? Let’s
-                  build something impactful.
+        {/* ─── CONTACT ─── */}
+        <section id="contact" className="section">
+          <div className="container">
+            <div className="contact-grid">
+              <div className="contact-info reveal">
+                <span className="kicker">Contact</span>
+                <h2 className="section-title">Let's Build Something<br /><em>Remarkable</em></h2>
+                <p className="section-sub">
+                  Have an internship opportunity or a backend challenge?
+                  I'm actively looking for teams to grow with.
                 </p>
-                <div className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
-                  <div className="info-card">
-                    <FaEnvelope />
-                    <div>
-                      <p className="text-xs uppercase text-slate-400">Email</p>
-                      <p className="font-semibold">kasun.dev@email.com</p>
-                    </div>
-                  </div>
-                  <div className="info-card">
-                    <FaPhoneAlt />
-                    <div>
-                      <p className="text-xs uppercase text-slate-400">Phone</p>
-                      <p className="font-semibold">+94 77 123 4567</p>
-                    </div>
-                  </div>
-                  <div className="info-card">
-                    <FaLinkedin />
-                    <div>
-                      <p className="text-xs uppercase text-slate-400">
-                        LinkedIn
-                      </p>
-                      <p className="font-semibold">kasun-udayanga</p>
-                    </div>
-                  </div>
-                  <div className="info-card">
-                    <FaGithub />
-                    <div>
-                      <p className="text-xs uppercase text-slate-400">GitHub</p>
-                      <p className="font-semibold">github.com/yourname</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="btn-group mt-6 text-sm font-semibold">
-                  <a href="https://linkedin.com" className="btn-secondary">
-                    <FaLinkedin /> LinkedIn
-                  </a>
-                  <a href="https://github.com" className="btn-secondary">
-                    <FaGithub /> GitHub
-                  </a>
+
+                <div className="contact-items">
+                  {[
+                    { icon: FaEnvelope, label: "Email", value: "kasun.dev@email.com", href: "mailto:kasun.dev@email.com" },
+                    { icon: FaPhoneAlt, label: "Phone", value: "+94 77 123 4567", href: "tel:+94771234567" },
+                    { icon: FaLinkedin, label: "LinkedIn", value: "kasun-udayanga", href: "https://linkedin.com" },
+                    { icon: FaGithub, label: "GitHub", value: "github.com/yourname", href: "https://github.com" },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <a key={item.label} href={item.href} className="contact-item">
+                        <span className="contact-icon">
+                          <Icon />
+                        </span>
+                        <div>
+                          <span className="contact-label">{item.label}</span>
+                          <span className="contact-value">{item.value}</span>
+                        </div>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
-              <form className="card p-6">
-                <h3 className="text-lg font-semibold">Send a Message</h3>
-                <div className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
-                  <div>
-                    <label className="text-slate-500">Full Name</label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      className="input-field"
-                    />
+
+              <div className="contact-form-wrap reveal reveal-right">
+                <form className="contact-form">
+                  <h3>Send a Message</h3>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Full Name</label>
+                      <input type="text" placeholder="Your name" />
+                    </div>
+                    <div className="form-group">
+                      <label>Email</label>
+                      <input type="email" placeholder="you@email.com" />
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-slate-500">Email</label>
-                    <input
-                      type="email"
-                      placeholder="you@email.com"
-                      className="input-field"
-                    />
+                  <div className="form-group">
+                    <label>Subject</label>
+                    <input type="text" placeholder="Internship opportunity" />
                   </div>
-                </div>
-                <div className="mt-4 text-sm">
-                  <div>
-                    <label className="text-slate-500">Message</label>
-                    <textarea
-                      rows="4"
-                      placeholder="Tell me about the opportunity"
-                      className="input-field"
-                    />
+                  <div className="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Tell me about the opportunity..." />
                   </div>
-                  <button type="submit" className="btn-primary">
-                    Send Message
-                    <FaArrowRight />
+                  <button type="submit" className="btn-submit">
+                    Send Message <FaArrowRight />
                   </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="section-block">
-          <div className="content-shell">
-            <div className="cta-band">
-              <div>
-                <p className="section-kicker">Let’s Work Together</p>
-                <h2 className="section-title mt-2">
-                  Ready to bring your backend ideas to life?
-                </h2>
-                <p className="section-subtitle mt-4">
-                  I’m actively looking for internship opportunities where I can
-                  contribute and grow alongside an ambitious engineering team.
-                </p>
-              </div>
-              <div className="btn-group">
+        {/* ─── CTA BAND ─── */}
+        <section className="cta-section">
+          <div className="container">
+            <div className="cta-inner reveal">
+              <div className="cta-bg-orb" />
+              <span className="kicker" style={{ color: "#f59e0b" }}>Let's Work Together</span>
+              <h2 className="cta-title">Ready to bring your<br />backend ideas to life?</h2>
+              <p className="cta-sub">
+                Actively seeking internship opportunities to contribute and grow
+                alongside an ambitious engineering team.
+              </p>
+              <div className="cta-actions">
                 <a href="#contact" className="btn-primary">
-                  Schedule a Call
-                  <FaArrowRight />
+                  Schedule a Call <FaArrowRight />
                 </a>
-                <a href="#projects" className="btn-secondary">
+                <a href="#projects" className="btn-ghost">
                   View Case Studies
                 </a>
               </div>
-              <div className="cta-list">
-                <div>
-                  <FaUserCheck />
-                  <span>Fast response time</span>
-                </div>
-                <div>
-                  <FaChartLine />
-                  <span>Data-driven decisions</span>
-                </div>
-                <div>
-                  <FaCloud />
-                  <span>Cloud-ready delivery</span>
-                </div>
+              <div className="cta-badges">
+                <span><FaUserCheck /> Fast response</span>
+                <span><FaChartLine /> Data-driven</span>
+                <span><FaCloud /> Cloud-ready</span>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white/80 py-8 text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-950/70">
-        <div className="content-shell flex flex-wrap items-center justify-between gap-4">
-          <p>© 2026 Kasun Udayanga. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com"
-              className="hover:text-slate-700 dark:hover:text-slate-200"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://linkedin.com"
-              className="hover:text-slate-700 dark:hover:text-slate-200"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="mailto:kasun.dev@email.com"
-              className="hover:text-slate-700 dark:hover:text-slate-200"
-            >
-              <FaEnvelope />
-            </a>
+      {/* ─── FOOTER ─── */}
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <p className="footer-copy">© 2026 Kasun Udayanga. All rights reserved.</p>
+          <div className="footer-links">
+            <a href="https://github.com"><FaGithub /></a>
+            <a href="https://linkedin.com"><FaLinkedin /></a>
+            <a href="mailto:kasun.dev@email.com"><FaEnvelope /></a>
           </div>
         </div>
       </footer>
