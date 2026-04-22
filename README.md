@@ -1,37 +1,14 @@
-# Personal Portfolio (Backend Developer Internship)
+# Personal Portfolio (Full-Stack Developer)
 
-Modern, responsive single-page portfolio built with React + Vite + Tailwind CSS. It highlights backend-focused projects, certifications, and contact details for internship opportunities.
+Modern, responsive single-page portfolio built with React + Vite + Tailwind CSS. It highlights full-stack projects, certifications, and contact details for internship opportunities.
 
-## ✨ Features
+## 👋 About Me
 
-- Clean, minimal design with soft shadows and rounded cards
-- Smooth scrolling navigation + responsive layout
-- Dark mode toggle
-- Skills with progress indicators and icons
+I’m Kasun Imasha Udayanga, an ICT undergraduate and full-stack web developer who enjoys building clean, reliable user experiences backed by scalable APIs and databases.
 
-## 🧰 Tech Stack
+## 🎓 Qualifications
 
-- React 19 + Vite
-- Tailwind CSS 4
-- React Icons
+- Third-year ICT Undergraduate
+- Backend development certifications (IBM, AWS, Google Cloud)
+- Full-stack web development experience (React, Node.js, Express, Spring Boot)
 
-## 🚀 Running locally
-
-1. Install dependencies
-2. Start the dev server
-
-```bash
-npm install
-npm run dev
-```
-
-## 🏗️ Build for production
-
-```bash
-npm run build
-```
-
-## 📄 Customize
-
-- Update your profile details in `src/App.jsx`
-- Swap project links for your own repositories and demos

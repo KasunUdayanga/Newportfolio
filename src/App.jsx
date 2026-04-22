@@ -482,7 +482,7 @@ export default function App() {
                   Backend-focused builds that highlight my technical range.
                 </p>
               </div>
-              <a href="https://github.com/KasunUdayanga" className="gh-link">
+              <a href="https://github.com/KasunUdayanga?tab=repositories" className="gh-link">
                 <FaGithub /> View All <FaExternalLinkAlt className="xs" />
               </a>
             </div>
