@@ -245,7 +245,7 @@ export default function App() {
               </h1>
 
               <p className="h-body">
-                BICT (Hons) undergraduate focused on building modern
+                BICT (Hons) graduate focused on building modern
                 <strong> full-stack web applications</strong> with reliable
                 APIs, responsive interfaces, and scalable databases. I enjoy
                 turning complex problems into fast, maintainable products.
@@ -313,7 +313,7 @@ export default function App() {
                   that <em>just work</em>
                 </h2>
                 <p className="sec-body">
-                  I’m a motivated BICT (Hons) undergraduate at the University of
+                  I’m a motivated BICT (Hons) graduate at the University of
                   Jaffna with a GPA of 3.15/4.0. My focus is full-stack
                   development, cloud computing, and building high-quality
                   RESTful APIs with responsive user interfaces. I also have

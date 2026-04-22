@@ -709,7 +709,6 @@ a {
 @media (max-width: 540px) {
   .about-cards {
     grid-template-columns: 1fr;
- 
   }
 
   .a-card {
@@ -759,7 +758,6 @@ a {
   box-shadow: var(--shadow-sm);
   margin-bottom: 14px;
   width: min(100%, 360px);
-  
 }
 .brings-card h3,
 .facts-card h3 {
@@ -1239,9 +1237,16 @@ a {
 ═══════════════════════════════════════════════════ */
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.fr;
   gap: 64px;
   align-items: start;
+}
+
+.contact-left,
+.contact-right {
+  align-self: start;
+  margin-top: 3px;
+  
 }
 @media (max-width: 900px) {
   .contact-layout {
@@ -1310,6 +1315,7 @@ a {
   background: var(--surface);
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-lg);
+  margin-top: 35px;
 }
 .c-form h3 {
   font-size: 1.3rem;
