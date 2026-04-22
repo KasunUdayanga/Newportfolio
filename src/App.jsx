@@ -158,6 +158,20 @@ const stats = [
   { label: "Tech stack", value: "10+", emoji: "⚛️" },
 ];
 
+const researchWorks = [
+  {
+    title:
+      "A Transformer-Based Study of Named Entity Recognition in Sinhala Political Text",
+    date: "March 2026",
+    description:
+      "Evaluated transformer models (XLM-R, InfoXLM, SinBERT) to identify persons, organizations, and locations in Sinhala political text.",
+    authors: "D.D.K.I Udayanga, S.A.S. Kavindya, K.M.P.S. Gunasekara",
+    repo: "https://github.com/KasunUdayanga/NER-Sinhala-political-comment-identifier",
+    dataset:
+      "https://huggingface.co/datasets/kasunUdayanga/Sinhala_Annotation_Dataset",
+  },
+];
+
 function useScrollReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
@@ -222,13 +236,18 @@ export default function App() {
             </span>
           </a>
           <nav className="desktop-nav">
-            {["about", "skills", "projects", "experience", "contact"].map(
-              (n) => (
-                <a key={n} href={`#${n}`} className="nav-link">
-                  {n.charAt(0).toUpperCase() + n.slice(1)}
-                </a>
-              )
-            )}
+            {[
+              "about",
+              "skills",
+              "projects",
+              "experience",
+              "research",
+              "contact",
+            ].map((n) => (
+              <a key={n} href={`#${n}`} className="nav-link">
+                {n.charAt(0).toUpperCase() + n.slice(1)}
+              </a>
+            ))}
           </nav>
 
           <div className="header-end">
@@ -581,6 +600,55 @@ export default function App() {
                   <p className="cc-sub">{c.subtitle}</p>
                   <p className="cc-body">{c.body}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── RESEARCH ─── */}
+        <section id="research" className="section">
+          <div className="container">
+            <div className="sec-head reveal">
+              <span className="eyebrow">Research</span>
+              <h2 className="sec-title">Research Highlights</h2>
+              <p className="sec-sub">
+                Publications and datasets focused on Sinhala NLP and transformer
+                evaluation.
+              </p>
+            </div>
+
+            <div className="research-grid">
+              {researchWorks.map((r, i) => (
+                <article
+                  key={r.title}
+                  className="research-card reveal"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <div className="research-top">
+                    <h3>{r.title}</h3>
+                    <span>{r.date}</span>
+                  </div>
+                  <p className="research-body">{r.description}</p>
+                  <p className="research-authors">{r.authors}</p>
+                  <div className="research-links">
+                    <a
+                      href={r.repo}
+                      className="gh-link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaGithub /> Repository
+                    </a>
+                    <a
+                      href={r.dataset}
+                      className="gh-link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaExternalLinkAlt className="xs" /> Dataset
+                    </a>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
