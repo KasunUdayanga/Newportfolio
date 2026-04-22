@@ -1,21 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaPhoneAlt,
-  FaMoon,
-  FaSun,
-  FaExternalLinkAlt,
-  FaCode,
-  FaServer,
-  FaDatabase,
-  FaCertificate,
-  FaArrowRight,
-  FaShieldAlt,
-  FaCloud,
-  FaChartLine,
-  FaUserCheck,
+  FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt,
+  FaMoon, FaSun, FaExternalLinkAlt, FaCode, FaServer,
+  FaDatabase, FaCertificate, FaArrowRight, FaShieldAlt,
+  FaCloud, FaChartLine, FaUserCheck,
 } from "react-icons/fa";
 import { HiOutlineSparkles } from "react-icons/hi2";
 import heroImage from "./assets/hero.png";
@@ -25,42 +13,42 @@ const projects = [
   {
     title: "Netflix Clone",
     tag: "Full-Stack",
-    description:
-      "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
+    emoji: "🎬",
+    description: "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
     tech: ["React", "Node.js", "TMDB API"],
     github: "https://github.com/yourname/netflix-clone",
     demo: "https://netflix-clone.example.com",
-    number: "01",
+    color: "#f97316",
   },
   {
     title: "Live Chat App",
     tag: "Real-time",
-    description:
-      "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
+    emoji: "💬",
+    description: "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
     tech: ["React", "Express", "Socket.IO"],
     github: "https://github.com/yourname/live-chat-app",
     demo: "https://live-chat.example.com",
-    number: "02",
+    color: "#0d9488",
   },
   {
-    title: "Inventory Management",
+    title: "Inventory System",
     tag: "Backend",
-    description:
-      "Role-based inventory management with analytics dashboard and automated stock alerts.",
+    emoji: "📦",
+    description: "Role-based inventory management with analytics dashboard and automated stock alerts.",
     tech: ["Spring Boot", "MySQL", "Docker"],
     github: "https://github.com/yourname/inventory-system",
     demo: "https://inventory.example.com",
-    number: "03",
+    color: "#8b5cf6",
   },
   {
-    title: "Smart Attendance Tracker",
+    title: "Attendance Tracker",
     tag: "API",
-    description:
-      "Backend-driven attendance tracker with QR validation and export-ready reports.",
+    emoji: "📋",
+    description: "Backend-driven attendance tracker with QR validation and export-ready reports.",
     tech: ["Python", "FastAPI", "MongoDB"],
     github: "https://github.com/yourname/attendance-tracker",
     demo: "https://attendance.example.com",
-    number: "04",
+    color: "#ec4899",
   },
 ];
 
@@ -68,23 +56,23 @@ const certifications = [
   {
     title: "IBM Backend Development",
     subtitle: "Professional Certificate",
-    description:
-      "Built production-ready APIs, automated tests, and containerized services with Docker.",
-    icon: "🏆",
+    body: "Built production-ready APIs, automated tests, and containerized services with Docker.",
+    emoji: "🏆",
+    color: "#0d9488",
   },
   {
     title: "AWS Cloud Practitioner",
     subtitle: "Essentials",
-    description:
-      "Validated fundamentals in cloud architecture, IAM, and AWS pricing models.",
-    icon: "☁️",
+    body: "Validated fundamentals in cloud architecture, IAM, and AWS pricing models.",
+    emoji: "☁️",
+    color: "#f97316",
   },
   {
     title: "Google Cloud Foundations",
     subtitle: "Certification",
-    description:
-      "Core Google Cloud services, networking, and deployment strategies.",
-    icon: "🌐",
+    body: "Core Google Cloud services, networking, and deployment strategies.",
+    emoji: "🌐",
+    color: "#8b5cf6",
   },
 ];
 
@@ -93,196 +81,174 @@ const skillGroups = [
     title: "Languages",
     icon: FaCode,
     items: ["JavaScript", "Python", "Java", "PHP"],
-    accent: "#f59e0b",
+    color: "#f97316",
   },
   {
-    title: "Frameworks",
+    title: "Frameworks & Tools",
     icon: FaServer,
     items: ["React", "Node.js", "Express", "Spring Boot", "Docker"],
-    accent: "#3b82f6",
+    color: "#0d9488",
   },
   {
     title: "Databases",
     icon: FaDatabase,
     items: ["MySQL", "MongoDB"],
-    accent: "#10b981",
+    color: "#8b5cf6",
   },
 ];
 
 const skillLevels = [
-  { name: "Backend API Design", level: 85 },
-  { name: "Database Modeling", level: 80 },
-  { name: "Containerization", level: 70 },
-  { name: "Cloud Fundamentals", level: 65 },
+  { name: "Backend API Design", level: 85, color: "#0d9488" },
+  { name: "Database Modeling", level: 80, color: "#f97316" },
+  { name: "Containerization", level: 70, color: "#8b5cf6" },
+  { name: "Cloud Fundamentals", level: 65, color: "#ec4899" },
 ];
 
 const stats = [
-  { label: "Projects Delivered", value: "12+", icon: "◈" },
-  { label: "Certifications", value: "3", icon: "◆" },
-  { label: "Tech Stack", value: "10+", icon: "◉" },
+  { label: "Projects", value: "12+", emoji: "🚀" },
+  { label: "Certificates", value: "3", emoji: "🏅" },
+  { label: "Tech Stack", value: "10+", emoji: "⚡" },
 ];
 
 const processSteps = [
-  {
-    title: "Discover",
-    description: "Clarify requirements, constraints, and success metrics.",
-    num: "01",
-  },
-  {
-    title: "Design",
-    description: "Model the data, API contracts, and system architecture.",
-    num: "02",
-  },
-  {
-    title: "Build",
-    description: "Implement, test, and document reliable backend services.",
-    num: "03",
-  },
-  {
-    title: "Improve",
-    description: "Monitor, iterate, and optimize performance over time.",
-    num: "04",
-  },
+  { title: "Discover", desc: "Clarify requirements, constraints, and success metrics.", emoji: "🔍", color: "#f97316" },
+  { title: "Design", desc: "Model the data, API contracts, and system architecture.", emoji: "📐", color: "#0d9488" },
+  { title: "Build", desc: "Implement, test, and document reliable backend services.", emoji: "🔧", color: "#8b5cf6" },
+  { title: "Improve", desc: "Monitor, iterate, and optimize performance over time.", emoji: "📈", color: "#ec4899" },
 ];
 
 function useScrollReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
+    const io = new IntersectionObserver(
+      (entries) =>
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            e.target.classList.add("revealed");
-            observer.unobserve(e.target);
+            e.target.classList.add("visible");
+            io.unobserve(e.target);
           }
-        });
-      },
-      { threshold: 0.12 }
+        }),
+      { threshold: 0.1 }
     );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 }
 
-function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
+export default function App() {
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  }, [dark]);
 
   useScrollReveal();
 
   return (
-    <div className={`portfolio-root ${darkMode ? "dark" : ""}`}>
+    <div className="root">
+
       {/* ─── HEADER ─── */}
-      <header className="site-header">
-        <nav className="nav-inner">
-          <a href="#home" className="nav-brand">
-            <span className="brand-icon">
-              <HiOutlineSparkles />
-            </span>
-            <span className="brand-name">Kasun<span className="brand-dot">.</span></span>
+      <header className="header">
+        <div className="header-inner">
+          <a href="#home" className="logo">
+            <span className="logo-mark"><HiOutlineSparkles /></span>
+            <span className="logo-name">Kasun<span className="logo-dot">.</span></span>
           </a>
 
-          <div className="nav-links">
-            {["about", "skills", "projects", "experience", "contact"].map((s) => (
-              <a key={s} className="nav-link" href={`#${s}`}>
-                {s.charAt(0).toUpperCase() + s.slice(1)}
+          <nav className="desktop-nav">
+            {["about", "skills", "projects", "experience", "contact"].map((n) => (
+              <a key={n} href={`#${n}`} className="nav-link">
+                {n.charAt(0).toUpperCase() + n.slice(1)}
               </a>
             ))}
-          </div>
+          </nav>
 
-          <div className="nav-actions">
-            <button
-              className="theme-toggle"
-              onClick={() => setDarkMode((p) => !p)}
-              aria-label="Toggle theme"
-            >
-              {darkMode ? <FaSun /> : <FaMoon />}
+          <div className="header-end">
+            <button className="theme-toggle" onClick={() => setDark((p) => !p)} aria-label="Toggle theme">
+              {dark ? <FaSun /> : <FaMoon />}
             </button>
-            <a href="#contact" className="btn-hire">
+            <a href="#contact" className="hire-btn">
               Hire Me <FaArrowRight />
             </a>
           </div>
-        </nav>
+        </div>
       </header>
 
       <main>
         {/* ─── HERO ─── */}
-        <section id="home" className="hero-section">
-          <div className="hero-bg-orb orb-1" />
-          <div className="hero-bg-orb orb-2" />
-          <div className="hero-grid-overlay" />
+        <section id="home" className="hero">
+          <div className="blob b1" />
+          <div className="blob b2" />
+          <div className="blob b3" />
 
-          <div className="hero-inner">
-            <div className="hero-content reveal">
-              <div className="hero-badge">
-                <span className="badge-dot" />
+          <div className="hero-layout">
+            {/* Left */}
+            <div className="hero-text reveal">
+              <div className="avail-badge">
+                <span className="a-dot" />
                 Available for Internship
               </div>
 
-              <h1 className="hero-title">
-                <span className="hero-name">Kasun Udayanga</span>
-                <span className="hero-role">
-                  Backend <em>Developer</em>
+              <h1 className="h-title">
+                Hi, I'm{" "}
+                <span className="h-name">Kasun</span>
+                <br />
+                <span className="h-role">
+                  Backend <span className="h-squiggle">Developer</span>
                 </span>
               </h1>
 
-              <p className="hero-desc">
-                Third-year ICT undergraduate specializing in scalable backend
-                systems, RESTful APIs, and cloud-ready architectures. Turning
-                complex requirements into elegant, production-grade solutions.
+              <p className="h-body">
+                Third-year ICT undergraduate who loves building{" "}
+                <strong>reliable APIs</strong>, scalable databases, and
+                cloud-ready backend services. Turning complex problems
+                into clean, maintainable solutions.
               </p>
 
-              <div className="hero-cta">
+              <div className="h-cta">
                 <a href="#projects" className="btn-primary">
-                  View Work <FaArrowRight />
+                  View My Work <FaArrowRight />
                 </a>
-                <a href="#contact" className="btn-ghost">
-                  Let's Talk
+                <a href="#contact" className="btn-secondary">
+                  Get In Touch
                 </a>
               </div>
 
-              <div className="hero-stats">
+              <div className="h-stats">
                 {stats.map((s) => (
-                  <div key={s.label} className="stat-item">
-                    <span className="stat-icon">{s.icon}</span>
-                    <span className="stat-value">{s.value}</span>
-                    <span className="stat-label">{s.label}</span>
+                  <div key={s.label} className="h-stat">
+                    <span className="hs-emoji">{s.emoji}</span>
+                    <strong>{s.value}</strong>
+                    <span>{s.label}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="hero-visual reveal reveal-right">
-              <div className="hero-card-main">
-                <div className="card-glow" />
-                <img
-                  src={heroImage}
-                  alt="Developer illustration"
-                  className="hero-img"
-                />
-                <div className="hero-focus-tags">
-                  <p className="focus-label">Focus Areas</p>
-                  <div className="focus-chips">
+            {/* Right */}
+            <div className="hero-visual reveal">
+              <div className="hero-card">
+                <div className="hc-shine" />
+                <img src={heroImage} alt="Kasun" className="hero-img" />
+                <div className="hc-focus">
+                  <p className="hcf-label">Focus Areas</p>
+                  <div className="hcf-chips">
                     {["REST APIs", "Microservices", "Cloud & DevOps", "Security"].map((t) => (
-                      <span key={t} className="focus-chip">{t}</span>
+                      <span key={t} className="hcf-chip">{t}</span>
                     ))}
                   </div>
                 </div>
               </div>
-              <div className="hero-mini-cards">
-                <div className="mini-card">
+              <div className="hero-minis">
+                <div className="mini">
                   <span className="mini-label">Experience</span>
-                  <span className="mini-value">3+ Years</span>
+                  <span className="mini-val">3+ Years</span>
                   <span className="mini-sub">Academic + projects</span>
                 </div>
-                <div className="mini-card">
+                <div className="mini">
                   <span className="mini-label">Focus</span>
-                  <span className="mini-value">Backend</span>
-                  <span className="mini-sub">APIs, DBs & integrations</span>
+                  <span className="mini-val">Backend</span>
+                  <span className="mini-sub">APIs, DBs & cloud</span>
                 </div>
               </div>
             </div>
@@ -292,61 +258,63 @@ function App() {
         {/* ─── ABOUT ─── */}
         <section id="about" className="section">
           <div className="container">
-            <div className="section-header reveal">
-              <span className="kicker">About</span>
-              <h2 className="section-title">Crafting reliable systems<br />from the ground up</h2>
-            </div>
-
-            <div className="about-grid">
-              <div className="about-text reveal">
-                <p className="about-para">
-                  I'm a third-year ICT undergraduate who thrives on backend
-                  engineering and clean system architecture. I enjoy working with
-                  APIs, designing scalable databases, and ensuring performance
-                  and security in every solution I build.
+            <div className="about-layout">
+              <div className="about-left reveal">
+                <span className="eyebrow">About Me</span>
+                <h2 className="sec-title">Building systems<br />that <em>just work</em></h2>
+                <p className="sec-body">
+                  I'm a passionate ICT undergrad who thrives on backend
+                  engineering and clean system architecture. I enjoy working
+                  with APIs, designing scalable databases, and ensuring
+                  performance and security in every solution I build.
                 </p>
                 <div className="about-cards">
-                  <div className="about-card">
+                  <div className="a-card">
+                    <span className="ac-emoji">🎯</span>
                     <h4>Skills & Interests</h4>
-                    <p>API design, authentication, microservices, cloud deployment, DevOps automation.</p>
+                    <p>API design, auth flows, microservices, cloud deployment, DevOps automation.</p>
                   </div>
-                  <div className="about-card">
+                  <div className="a-card">
+                    <span className="ac-emoji">🌱</span>
                     <h4>Career Objective</h4>
-                    <p>Join a product team to deliver reliable backend platforms and gain real-world internship experience.</p>
+                    <p>Join an ambitious team, contribute to production systems, and grow every day.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="about-facts reveal reveal-right">
-                <div className="facts-card">
-                  <h3>What I Bring</h3>
+              <div className="about-right reveal">
+                <div className="brings-card">
+                  <h3>💡 What I Bring</h3>
                   <ul className="brings-list">
                     <li>
-                      <span className="brings-bullet" />
+                      <span className="bl-dot" style={{ background: "#0d9488" }} />
                       Backend-first mindset with clean, documented APIs.
                     </li>
                     <li>
-                      <span className="brings-bullet" />
+                      <span className="bl-dot" style={{ background: "#f97316" }} />
                       Experience collaborating with UI teams and product owners.
                     </li>
                     <li>
-                      <span className="brings-bullet" />
+                      <span className="bl-dot" style={{ background: "#8b5cf6" }} />
                       Passion for learning cloud-native and DevOps practices.
                     </li>
                   </ul>
                 </div>
-                <div className="quick-facts">
-                  {[
-                    { label: "Location", value: "Sri Lanka" },
-                    { label: "Availability", value: "Immediate" },
-                    { label: "Email", value: "kasun.dev@email.com" },
-                    { label: "Focus", value: "Backend & APIs" },
-                  ].map((f) => (
-                    <div key={f.label} className="fact-item">
-                      <span className="fact-label">{f.label}</span>
-                      <span className="fact-value">{f.value}</span>
-                    </div>
-                  ))}
+                <div className="facts-card">
+                  <h3>📌 Quick Facts</h3>
+                  <div className="facts-grid">
+                    {[
+                      ["Location", "Sri Lanka 🇱🇰"],
+                      ["Availability", "Immediate ✅"],
+                      ["Email", "kasun.dev@email.com"],
+                      ["Focus", "Backend & APIs"],
+                    ].map(([l, v]) => (
+                      <div key={l} className="fact-row">
+                        <span className="fact-label">{l}</span>
+                        <span className="fact-val">{v}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -356,31 +324,29 @@ function App() {
         {/* ─── SKILLS ─── */}
         <section id="skills" className="section section-alt">
           <div className="container">
-            <div className="section-header reveal">
-              <span className="kicker">Skills</span>
-              <h2 className="section-title">Technical Expertise</h2>
-              <p className="section-sub">A balanced mix of backend engineering, tooling, and data management.</p>
+            <div className="sec-head reveal">
+              <span className="eyebrow">Skills</span>
+              <h2 className="sec-title">Technical Toolkit</h2>
+              <p className="sec-sub">Languages, frameworks, and tools I use to craft solid backend systems.</p>
             </div>
 
             <div className="skills-grid">
-              {skillGroups.map((group, i) => {
-                const Icon = group.icon;
+              {skillGroups.map((g, i) => {
+                const Icon = g.icon;
                 return (
                   <div
-                    key={group.title}
+                    key={g.title}
                     className="skill-card reveal"
-                    style={{ "--accent": group.accent, animationDelay: `${i * 0.1}s` }}
+                    style={{ "--c": g.color, animationDelay: `${i * 0.1}s` }}
                   >
-                    <div className="skill-card-header">
-                      <span className="skill-icon" style={{ color: group.accent }}>
-                        <Icon />
-                      </span>
-                      <h3>{group.title}</h3>
+                    <div className="sc-header">
+                      <span className="sc-icon"><Icon /></span>
+                      <h3>{g.title}</h3>
                     </div>
-                    <ul className="skill-list">
-                      {group.items.map((item) => (
-                        <li key={item} className="skill-item">
-                          <span className="skill-dot" style={{ background: group.accent }} />
+                    <ul className="sc-list">
+                      {g.items.map((item) => (
+                        <li key={item}>
+                          <span className="sc-dot" />
                           {item}
                         </li>
                       ))}
@@ -390,19 +356,19 @@ function App() {
               })}
             </div>
 
-            <div className="strengths-panel reveal">
-              <h3>Core Strengths</h3>
-              <div className="strengths-grid">
-                {skillLevels.map((skill) => (
-                  <div key={skill.name} className="strength-item">
-                    <div className="strength-header">
-                      <span>{skill.name}</span>
-                      <span className="strength-pct">{skill.level}%</span>
+            <div className="strengths reveal">
+              <h3>⚡ Core Strengths</h3>
+              <div className="strength-grid">
+                {skillLevels.map((sk) => (
+                  <div key={sk.name} className="strength-row">
+                    <div className="sr-top">
+                      <span>{sk.name}</span>
+                      <span style={{ color: sk.color, fontWeight: 700 }}>{sk.level}%</span>
                     </div>
-                    <div className="strength-track">
+                    <div className="sr-track">
                       <div
-                        className="strength-bar"
-                        style={{ "--w": `${skill.level}%` }}
+                        className="sr-fill"
+                        style={{ "--w": `${sk.level}%`, "--c": sk.color }}
                       />
                     </div>
                   </div>
@@ -415,42 +381,40 @@ function App() {
         {/* ─── PROJECTS ─── */}
         <section id="projects" className="section">
           <div className="container">
-            <div className="section-header-row reveal">
+            <div className="sec-head-row reveal">
               <div>
-                <span className="kicker">Projects</span>
-                <h2 className="section-title">Selected Work</h2>
-                <p className="section-sub">Backend-focused projects that highlight my technical range.</p>
+                <span className="eyebrow">Projects</span>
+                <h2 className="sec-title">Selected Work</h2>
+                <p className="sec-sub">Backend-focused builds that highlight my technical range.</p>
               </div>
-              <a href="https://github.com/yourname" className="link-github">
-                <FaGithub /> View All on GitHub <FaExternalLinkAlt className="ext-icon" />
+              <a href="https://github.com/yourname" className="gh-link">
+                <FaGithub /> View All <FaExternalLinkAlt className="xs" />
               </a>
             </div>
 
-            <div className="projects-grid">
-              {projects.map((project, i) => (
+            <div className="proj-grid">
+              {projects.map((p, i) => (
                 <article
-                  key={project.title}
-                  className="project-card reveal"
-                  style={{ animationDelay: `${i * 0.08}s` }}
+                  key={p.title}
+                  className="proj-card reveal"
+                  style={{ "--pc": p.color, animationDelay: `${i * 0.08}s` }}
                 >
-                  <div className="project-number">{project.number}</div>
-                  <div className="project-tag">{project.tag}</div>
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-desc">{project.description}</p>
-                  <div className="project-tech">
-                    {project.tech.map((t) => (
-                      <span key={t} className="tech-chip">{t}</span>
+                  <div className="pc-top">
+                    <span className="pc-emoji">{p.emoji}</span>
+                    <span className="pc-tag">{p.tag}</span>
+                  </div>
+                  <h3 className="pc-title">{p.title}</h3>
+                  <p className="pc-desc">{p.description}</p>
+                  <div className="pc-techs">
+                    {p.tech.map((t) => (
+                      <span key={t} className="pc-tech">{t}</span>
                     ))}
                   </div>
-                  <div className="project-links">
-                    <a href={project.github} className="proj-link">
-                      <FaGithub /> Code
-                    </a>
-                    <a href={project.demo} className="proj-link proj-link-demo">
-                      <FaExternalLinkAlt /> Demo
-                    </a>
+                  <div className="pc-footer">
+                    <a href={p.github} className="pf-link"><FaGithub /> Code</a>
+                    <a href={p.demo} className="pf-link pf-demo"><FaExternalLinkAlt /> Demo</a>
                   </div>
-                  <div className="project-accent" />
+                  <div className="pc-accent-bar" />
                 </article>
               ))}
             </div>
@@ -460,39 +424,36 @@ function App() {
         {/* ─── EXPERIENCE ─── */}
         <section id="experience" className="section section-alt">
           <div className="container">
-            <div className="section-header reveal">
-              <span className="kicker">Experience</span>
-              <h2 className="section-title">Certifications & Process</h2>
-              <p className="section-sub">Continuous learning reflected in credentials and a proven workflow.</p>
+            <div className="sec-head reveal">
+              <span className="eyebrow">Experience</span>
+              <h2 className="sec-title">Certifications & Process</h2>
+              <p className="sec-sub">Credentials that reflect continuous learning and a clear way of working.</p>
             </div>
 
-            <div className="certs-grid">
-              {certifications.map((cert, i) => (
+            <div className="cert-grid">
+              {certifications.map((c, i) => (
                 <div
-                  key={cert.title}
+                  key={c.title}
                   className="cert-card reveal"
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  style={{ "--cc": c.color, animationDelay: `${i * 0.1}s` }}
                 >
-                  <div className="cert-icon">{cert.icon}</div>
-                  <div className="cert-badge">
-                    <FaCertificate /> Certified
-                  </div>
-                  <h3 className="cert-title">{cert.title}</h3>
-                  <p className="cert-subtitle">{cert.subtitle}</p>
-                  <p className="cert-desc">{cert.description}</p>
+                  <span className="cc-emoji">{c.emoji}</span>
+                  <div className="cc-badge"><FaCertificate /> Certified</div>
+                  <h3>{c.title}</h3>
+                  <p className="cc-sub">{c.subtitle}</p>
+                  <p className="cc-body">{c.body}</p>
                 </div>
               ))}
             </div>
 
-            <div className="process-track reveal">
-              <h3 className="process-heading">How I Work</h3>
-              <div className="process-steps">
-                {processSteps.map((step, i) => (
-                  <div key={step.title} className="process-step">
-                    <div className="step-num">{step.num}</div>
-                    {i < processSteps.length - 1 && <div className="step-line" />}
-                    <h4 className="step-title">{step.title}</h4>
-                    <p className="step-desc">{step.description}</p>
+            <div className="process-box reveal">
+              <h3 className="pb-title">🗺️ How I Work</h3>
+              <div className="pb-grid">
+                {processSteps.map((s, i) => (
+                  <div key={s.title} className="pb-step" style={{ "--psc": s.color }}>
+                    <div className="pbs-num">{String(i + 1).padStart(2, "0")}</div>
+                    <h4 className="pbs-h">{s.emoji} {s.title}</h4>
+                    <p className="pbs-p">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -503,60 +464,55 @@ function App() {
         {/* ─── CONTACT ─── */}
         <section id="contact" className="section">
           <div className="container">
-            <div className="contact-grid">
-              <div className="contact-info reveal">
-                <span className="kicker">Contact</span>
-                <h2 className="section-title">Let's Build Something<br /><em>Remarkable</em></h2>
-                <p className="section-sub">
-                  Have an internship opportunity or a backend challenge?
-                  I'm actively looking for teams to grow with.
+            <div className="contact-layout">
+              <div className="contact-left reveal">
+                <span className="eyebrow">Contact</span>
+                <h2 className="sec-title">Let's build something<br /><em>amazing</em> 🚀</h2>
+                <p className="sec-sub">
+                  Have an internship opportunity or backend challenge?
+                  My inbox is always open.
                 </p>
 
                 <div className="contact-items">
                   {[
-                    { icon: FaEnvelope, label: "Email", value: "kasun.dev@email.com", href: "mailto:kasun.dev@email.com" },
-                    { icon: FaPhoneAlt, label: "Phone", value: "+94 77 123 4567", href: "tel:+94771234567" },
-                    { icon: FaLinkedin, label: "LinkedIn", value: "kasun-udayanga", href: "https://linkedin.com" },
-                    { icon: FaGithub, label: "GitHub", value: "github.com/yourname", href: "https://github.com" },
-                  ].map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <a key={item.label} href={item.href} className="contact-item">
-                        <span className="contact-icon">
-                          <Icon />
-                        </span>
-                        <div>
-                          <span className="contact-label">{item.label}</span>
-                          <span className="contact-value">{item.value}</span>
-                        </div>
-                      </a>
-                    );
-                  })}
+                    { Icon: FaEnvelope, label: "Email", val: "kasun.dev@email.com", href: "mailto:kasun.dev@email.com", c: "#f97316" },
+                    { Icon: FaPhoneAlt, label: "Phone", val: "+94 77 123 4567", href: "tel:+94771234567", c: "#0d9488" },
+                    { Icon: FaLinkedin, label: "LinkedIn", val: "kasun-udayanga", href: "https://linkedin.com", c: "#0077b5" },
+                    { Icon: FaGithub, label: "GitHub", val: "github.com/yourname", href: "https://github.com", c: "#6b7280" },
+                  ].map(({ Icon, label, val, href, c }) => (
+                    <a key={label} href={href} className="ci-item">
+                      <span className="ci-icon" style={{ background: c + "15", color: c }}><Icon /></span>
+                      <div>
+                        <span className="ci-label">{label}</span>
+                        <span className="ci-val">{val}</span>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              <div className="contact-form-wrap reveal reveal-right">
-                <form className="contact-form">
-                  <h3>Send a Message</h3>
-                  <div className="form-row">
-                    <div className="form-group">
+              <div className="contact-right reveal">
+                <form className="c-form">
+                  <h3>✉️ Drop a Message</h3>
+                  <div className="cf-2col">
+                    <div className="cf-group">
                       <label>Full Name</label>
                       <input type="text" placeholder="Your name" />
                     </div>
-                    <div className="form-group">
+                    <div className="cf-group">
                       <label>Email</label>
                       <input type="email" placeholder="you@email.com" />
                     </div>
                   </div>
-                  <div className="form-group">
+                  <div className="cf-group">
                     <label>Subject</label>
-                    <input type="text" placeholder="Internship opportunity" />
+                    <input type="text" placeholder="Internship / Project Idea" />
                   </div>
-                  <div className="form-group">
+                  <div className="cf-group">
                     <label>Message</label>
-                    <textarea rows="4" placeholder="Tell me about the opportunity..." />
+                    <textarea rows="4" placeholder="Tell me more..." />
                   </div>
-                  <button type="submit" className="btn-submit">
+                  <button type="submit" className="cf-btn">
                     Send Message <FaArrowRight />
                   </button>
                 </form>
@@ -565,28 +521,24 @@ function App() {
           </div>
         </section>
 
-        {/* ─── CTA BAND ─── */}
-        <section className="cta-section">
+        {/* ─── CTA ─── */}
+        <section className="cta-wrap">
           <div className="container">
-            <div className="cta-inner reveal">
-              <div className="cta-bg-orb" />
-              <span className="kicker" style={{ color: "#f59e0b" }}>Let's Work Together</span>
+            <div className="cta-box reveal">
+              <div className="cta-blob" />
+              <span className="eyebrow" style={{ color: "#0d9488" }}>Let's Work Together</span>
               <h2 className="cta-title">Ready to bring your<br />backend ideas to life?</h2>
-              <p className="cta-sub">
-                Actively seeking internship opportunities to contribute and grow
-                alongside an ambitious engineering team.
+              <p className="cta-body">
+                Actively seeking internship opportunities to contribute,
+                learn, and grow alongside an ambitious team.
               </p>
               <div className="cta-actions">
-                <a href="#contact" className="btn-primary">
-                  Schedule a Call <FaArrowRight />
-                </a>
-                <a href="#projects" className="btn-ghost">
-                  View Case Studies
-                </a>
+                <a href="#contact" className="btn-primary">Schedule a Call <FaArrowRight /></a>
+                <a href="#projects" className="btn-secondary">View Projects</a>
               </div>
-              <div className="cta-badges">
+              <div className="cta-chips">
                 <span><FaUserCheck /> Fast response</span>
-                <span><FaChartLine /> Data-driven</span>
+                <span><FaChartLine /> Results-driven</span>
                 <span><FaCloud /> Cloud-ready</span>
               </div>
             </div>
@@ -595,10 +547,10 @@ function App() {
       </main>
 
       {/* ─── FOOTER ─── */}
-      <footer className="site-footer">
+      <footer className="footer">
         <div className="footer-inner">
-          <p className="footer-copy">© 2026 Kasun Udayanga. All rights reserved.</p>
-          <div className="footer-links">
+          <p>© 2026 Kasun Udayanga · Made with ❤️ in Sri Lanka</p>
+          <div className="footer-socials">
             <a href="https://github.com"><FaGithub /></a>
             <a href="https://linkedin.com"><FaLinkedin /></a>
             <a href="mailto:kasun.dev@email.com"><FaEnvelope /></a>
@@ -608,5 +560,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
