@@ -687,6 +687,7 @@ a {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 64px;
   align-items: start;
+  justify-items: center;
 }
 @media (max-width: 900px) {
   .about-layout {
@@ -704,11 +705,15 @@ a {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-top: 28px;
-  
 }
 @media (max-width: 540px) {
   .about-cards {
     grid-template-columns: 1fr;
+ 
+  }
+
+  .a-card {
+    width: min(100%, 360px);
   }
 }
 
@@ -753,6 +758,8 @@ a {
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-sm);
   margin-bottom: 14px;
+  width: min(100%, 360px);
+  
 }
 .brings-card h3,
 .facts-card h3 {
@@ -1487,7 +1494,6 @@ a {
 @media (max-width: 640px) {
   .section {
     padding: 60px 0;
-    
   }
   .hero {
     padding: 56px 0 68px;

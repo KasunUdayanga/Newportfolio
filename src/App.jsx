@@ -240,7 +240,7 @@ export default function App() {
                 Hi, I'm <span className="h-name">Kasun</span>
                 <br />
                 <span className="h-role">
-                  Software <span className="h-squiggle">Engineer</span>
+                  Software <span className="h-squiggle">Developer</span>
                 </span>
               </h1>
 
@@ -282,7 +282,7 @@ export default function App() {
                 />
                 <div className="hero-caption">
                   <h3>Kasun Udayanga</h3>
-                  <p>BICT (Hons)Graduate • Software Engineer</p>
+                  <p>BICT (Hons)Graduate • Software Developer</p>
                 </div>
               </div>
               <div className="hero-minis">
@@ -371,8 +371,6 @@ export default function App() {
                   <div className="facts-grid">
                     {[
                       ["Location", "Karandeniya  🇱🇰"],
-                      ["Availability", "Immediate"],
-                      ["Email", "udayangakasun696@gmail.com"],
                       ["Focus", "Full-stack "],
                       ["Education", "BICT (Hons) "],
                       ["GPA", "3.15 / 4.0"],
