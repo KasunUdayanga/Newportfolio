@@ -23,72 +23,59 @@ import "./App.css";
 
 const projects = [
   {
-    title: "Netflix Clone",
-    tag: "Full-Stack",
-    emoji: "🎬",
+    title: "TechHaven",
+    tag: "Full Stack",
+    emoji: "🛍️",
     description:
-      "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
-    tech: ["React", "Node.js", "TMDB API"],
-    github: "https://github.com/kasunudayanga/netflix-clone",
-    demo: "https://netflix-clone.example.com",
-    color: "#f97316",
+      "MERN e-commerce platform with dynamic product catalog, secure authentication, and payment integration.",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/kasunudayanga/techhaven",
+    demo: "https://techhaven.example.com",
+    color: "#f59e0b",
   },
   {
-    title: "Live Chat App",
+    title: "StudyChat",
     tag: "Real-time",
     emoji: "💬",
     description:
-      "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
-    tech: ["React", "Express", "Socket.IO"],
-    github: "https://github.com/kasunudayanga/live-chat-app",
-    demo: "https://live-chat.example.com",
-    color: "#0d9488",
-  },
-  {
-    title: "Inventory System",
-    tag: "Backend",
-    emoji: "📦",
-    description:
-      "Role-based inventory management with analytics dashboard and automated stock alerts.",
-    tech: ["Spring Boot", "MySQL", "Docker"],
-    github: "https://github.com/kasunudayanga/inventory-system",
-    demo: "https://inventory.example.com",
-    color: "#8b5cf6",
-  },
-  {
-    title: "Attendance Tracker",
-    tag: "API",
-    emoji: "📋",
-    description:
-      "Backend-driven attendance tracker with QR validation and export-ready reports.",
-    tech: ["Python", "FastAPI", "MongoDB"],
-    github: "https://github.com/kasunudayanga/attendance-tracker",
-    demo: "https://attendance.example.com",
-    color: "#ec4899",
+      "Mobile-first chat platform for students with topic-based rooms and real-time messaging.",
+    tech: ["React Native", "Expo", "Appwrite"],
+    github: "https://github.com/kasunudayanga/studychat",
+    demo: "https://studychat.example.com",
+    color: "#2563eb",
   },
 ];
 
 const certifications = [
   {
-    title: "IBM Backend Development",
+    title: "Meta Front-End & Back-End",
+    subtitle: "Developer Specializations",
+    body: "Comprehensive front-end and back-end specialization covering modern web stacks.",
+    color: "#2563eb",
+  },
+  {
+    title: "IBM Full Stack Software Developer",
     subtitle: "Professional Certificate",
-    body: "Built production-ready APIs, automated tests, and containerized services with Docker.",
-    emoji: "🏆",
-    color: "#0d9488",
+    body: "Full-stack development, DevOps practices, and cloud-ready application delivery.",
+    color: "#f59e0b",
   },
   {
-    title: "AWS Cloud Practitioner",
-    subtitle: "Essentials",
-    body: "Validated fundamentals in cloud architecture, IAM, and AWS pricing models.",
-    emoji: "☁️",
-    color: "#f97316",
+    title: "University of Moratuwa",
+    subtitle: "Front-End & Server-side Web",
+    body: "Front-end web development and server-side programming foundations.",
+    color: "#7c3aed",
   },
   {
-    title: "Google Cloud Foundations",
-    subtitle: "Certification",
-    body: "Core Google Cloud services, networking, and deployment strategies.",
-    emoji: "🌐",
-    color: "#8b5cf6",
+    title: "Developing AI Apps with Python",
+    subtitle: "Flask & APIs",
+    body: "Built AI-powered web services with Python, Flask, and RESTful APIs.",
+    color: "#db2777",
+  },
+  {
+    title: "Deploying MERN on Azure",
+    subtitle: "CICD Pipelines",
+    body: "End-to-end deployment of MERN apps with Azure CI/CD automation.",
+    color: "#0ea5e9",
   },
 ];
 
@@ -96,61 +83,53 @@ const skillGroups = [
   {
     title: "Languages",
     icon: FaCode,
-    items: ["JavaScript", "Python", "Java", "PHP"],
-    color: "#f97316",
+    items: [
+      "JavaScript",
+      "Python",
+      "PHP",
+      "Java",
+      "C#",
+      "C++",
+      "C",
+      "SQL",
+      "HTML",
+      "CSS",
+    ],
+    color: "#f59e0b",
   },
   {
     title: "Frameworks & Tools",
     icon: FaServer,
-    items: ["React", "Node.js", "Express", "Spring Boot", "Docker"],
-    color: "#0d9488",
+    items: [
+      "React",
+      "Node.js",
+      "Express",
+      "Django",
+      "Spring Boot",
+      "React Native",
+      "Docker",
+    ],
+    color: "#2563eb",
   },
   {
     title: "Databases",
     icon: FaDatabase,
-    items: ["MySQL", "MongoDB"],
-    color: "#8b5cf6",
+    items: ["MongoDB", "SQL", "Firebase", "Appwrite", "AWS", "Azure"],
+    color: "#7c3aed",
   },
 ];
 
 const skillLevels = [
-  { name: "Backend API Design", level: 85, color: "#0d9488" },
-  { name: "Database Modeling", level: 80, color: "#f97316" },
-  { name: "Containerization", level: 70, color: "#8b5cf6" },
-  { name: "Cloud Fundamentals", level: 65, color: "#ec4899" },
+  { name: "Full-Stack Web Development", level: 88, color: "#2563eb" },
+  { name: "REST API Design", level: 82, color: "#f59e0b" },
+  { name: "Database Engineering", level: 78, color: "#7c3aed" },
+  { name: "Cloud & DevOps", level: 60, color: "#db2777" },
 ];
 
 const stats = [
-  { label: "Projects", value: "12+", emoji: "🚀" },
-  { label: "Certificates", value: "3", emoji: "🏅" },
-  { label: "Tech Stack", value: "10+", emoji: "⚡" },
-];
-
-const processSteps = [
-  {
-    title: "Discover",
-    desc: "Clarify requirements, constraints, and success metrics.",
-    emoji: "🔍",
-    color: "#f97316",
-  },
-  {
-    title: "Design",
-    desc: "Model the data, API contracts, and system architecture.",
-    emoji: "📐",
-    color: "#0d9488",
-  },
-  {
-    title: "Build",
-    desc: "Implement, test, and document reliable backend services.",
-    emoji: "🔧",
-    color: "#8b5cf6",
-  },
-  {
-    title: "Improve",
-    desc: "Monitor, iterate, and optimize performance over time.",
-    emoji: "📈",
-    color: "#ec4899",
-  },
+  { label: "Projects", value: "25+", emoji: "🚀" },
+  { label: "Certifications", value: "20+", emoji: "🏅" },
+  { label: "Tech stack", value: "10+", emoji: "⚛️" },
 ];
 
 function useScrollReveal() {
@@ -261,15 +240,15 @@ export default function App() {
                 Hi, I'm <span className="h-name">Kasun</span>
                 <br />
                 <span className="h-role">
-                  Full-Stack<span className="h-squiggle">Developer</span>
+                  Software <span className="h-squiggle">Engineer</span>
                 </span>
               </h1>
 
               <p className="h-body">
-                ICT undergraduate focused on building modern
-                <strong> full-stack web applications</strong> from clean,
-                responsive UIs to secure APIs and scalable databases. I turn
-                ideas into fast, reliable, and user-friendly products.
+                BICT (Hons) undergraduate focused on building modern
+                <strong> full-stack web applications</strong> with reliable
+                APIs, responsive interfaces, and scalable databases. I enjoy
+                turning complex problems into fast, maintainable products.
               </p>
 
               <div className="h-cta">
@@ -303,7 +282,7 @@ export default function App() {
                 />
                 <div className="hero-caption">
                   <h3>Kasun Udayanga</h3>
-                  <p>ICT Undergraduate • Full-Stack Developer</p>
+                  <p>BICT (Hons)Graduate • Software Engineer</p>
                 </div>
               </div>
               <div className="hero-minis">
@@ -314,8 +293,8 @@ export default function App() {
                 </div>
                 <div className="mini">
                   <span className="mini-label">Focus</span>
-                  <span className="mini-val">Developer</span>
-                  <span className="mini-sub">APIs, DBs & cloud</span>
+                  <span className="mini-val">Full-Stack</span>
+                  <span className="mini-sub">Web, APIs & cloud</span>
                 </div>
               </div>
             </div>
@@ -334,10 +313,11 @@ export default function App() {
                   that <em>just work</em>
                 </h2>
                 <p className="sec-body">
-                  I'm a passionate ICT undergrade who thrives on backend
-                  engineering and clean system architecture. I enjoy working
-                  with APIs, designing scalable databases, and ensuring
-                  performance and security in every solution I build.
+                  I’m a motivated BICT (Hons) undergraduate at the University of
+                  Jaffna with a GPA of 3.15/4.0. My focus is full-stack
+                  development, cloud computing, and building high-quality
+                  RESTful APIs with responsive user interfaces. I also have
+                  internship experience as a Full-Stack Developer at Infinity AI.
                 </p>
                 <div className="about-cards">
                   <div className="a-card">
@@ -368,7 +348,7 @@ export default function App() {
                         className="bl-dot"
                         style={{ background: "#0d9488" }}
                       />
-                      Backend-first mindset with clean, documented APIs.
+                      Fullstack -first mindset with clean, documented APIs.
                     </li>
                     <li>
                       <span
@@ -391,9 +371,11 @@ export default function App() {
                   <div className="facts-grid">
                     {[
                       ["Location", "Karandeniya  🇱🇰"],
-                      ["Availability", "Immediate ✅"],
+                      ["Availability", "Immediate"],
                       ["Email", "udayangakasun696@gmail.com"],
-                      ["Focus", "Full-stack & IT related"],
+                      ["Focus", "Full-stack "],
+                      ["Education", "BICT (Hons) "],
+                      ["GPA", "3.15 / 4.0"],
                     ].map(([l, v]) => (
                       <div key={l} className="fact-row">
                         <span className="fact-label">{l}</span>
@@ -414,8 +396,8 @@ export default function App() {
               <span className="eyebrow">Skills</span>
               <h2 className="sec-title">Technical Toolkit</h2>
               <p className="sec-sub">
-                Languages, frameworks, and tools I use to craft solid backend
-                systems.
+                Languages, frameworks, and tools I use to craft full-stack web
+                products.
               </p>
             </div>
 
@@ -479,10 +461,13 @@ export default function App() {
                 <span className="eyebrow">Projects</span>
                 <h2 className="sec-title">Selected Work</h2>
                 <p className="sec-sub">
-                  Backend-focused builds that highlight my technical range.
+                  Full-stack builds that highlight my technical range.
                 </p>
               </div>
-              <a href="https://github.com/KasunUdayanga?tab=repositories" className="gh-link">
+              <a
+                href="https://github.com/KasunUdayanga?tab=repositories"
+                className="gh-link"
+              >
                 <FaGithub /> View All <FaExternalLinkAlt className="xs" />
               </a>
             </div>
@@ -527,11 +512,37 @@ export default function App() {
           <div className="container">
             <div className="sec-head reveal">
               <span className="eyebrow">Experience</span>
-              <h2 className="sec-title">Certifications & Process</h2>
+              <h2 className="sec-title">Certifications</h2>
               <p className="sec-sub">
-                Credentials that reflect continuous learning and a clear way of
-                working.
+                Internship experience and certifications that reflect continuous
+                learning.
               </p>
+              <br />
+              <a
+                href="https://www.credly.com/users/kasun-udayanga.822e289c"
+                className="gh-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Credly Profile <FaExternalLinkAlt className="xs" />
+              </a>
+            </div>
+
+            <div className="cert-grid">
+              <div className="cert-card reveal" style={{ "--cc": "#2563eb" }}>
+                <div className="cc-badge">
+                  <FaCertificate /> Internship
+                </div>
+                <h3>Full-Stack Developer Intern</h3>
+                <p className="cc-sub">
+                  Infinity AI Pvt Ltd • Apr 2025 – Oct 2025
+                </p>
+                <p className="cc-body">
+                  Contributed to InfinityOS SaaS, built RESTful APIs with
+                  Node.js and Express, integrated MongoDB/Mongoose, and
+                  delivered React UI features in an agile team.
+                </p>
+              </div>
             </div>
 
             <div className="cert-grid">
@@ -551,27 +562,6 @@ export default function App() {
                 </div>
               ))}
             </div>
-
-            <div className="process-box reveal">
-              <h3 className="pb-title">🗺️ How I Work</h3>
-              <div className="pb-grid">
-                {processSteps.map((s, i) => (
-                  <div
-                    key={s.title}
-                    className="pb-step"
-                    style={{ "--psc": s.color }}
-                  >
-                    <div className="pbs-num">
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-                    <h4 className="pbs-h">
-                      {s.emoji} {s.title}
-                    </h4>
-                    <p className="pbs-p">{s.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
@@ -587,7 +577,7 @@ export default function App() {
                   <em>amazing</em> 🚀
                 </h2>
                 <p className="sec-sub">
-                  Have an Job opportunity or Developing challenge? My inbox is
+                  Have a job opportunity or full-stack challenge? My inbox is
                   always open.
                 </p>
 
@@ -694,10 +684,10 @@ export default function App() {
               <h2 className="cta-title">
                 Ready to bring your
                 <br />
-                backend ideas to life?
+                mind ideas to life?
               </h2>
               <p className="cta-body">
-                Actively seeking internship opportunities to contribute, learn,
+                Actively seeking Job opportunities to contribute, learn,
                 and grow alongside an ambitious team.
               </p>
               <div className="cta-actions">

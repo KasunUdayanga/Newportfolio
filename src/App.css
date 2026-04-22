@@ -505,9 +505,9 @@ a {
 }
 
 .h-stats {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 40px;
 }
 
@@ -521,7 +521,13 @@ a {
   background: var(--surface);
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-sm);
-  min-width: 100px;
+  min-height: 86px;
+}
+
+@media (max-width: 640px) {
+  .h-stats {
+    grid-template-columns: 1fr;
+  }
 }
 .hs-emoji {
   font-size: 1.1rem;
