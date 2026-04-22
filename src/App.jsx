@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
 import {
-  FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt,
-  FaMoon, FaSun, FaExternalLinkAlt, FaCode, FaServer,
-  FaDatabase, FaCertificate, FaArrowRight, FaShieldAlt,
-  FaCloud, FaChartLine, FaUserCheck,
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMoon,
+  FaSun,
+  FaExternalLinkAlt,
+  FaCode,
+  FaServer,
+  FaDatabase,
+  FaCertificate,
+  FaArrowRight,
+  FaShieldAlt,
+  FaCloud,
+  FaChartLine,
+  FaUserCheck,
 } from "react-icons/fa";
 import { HiOutlineSparkles } from "react-icons/hi2";
-import heroImage from "./assets/hero.png";
+import heroImage from "./assets/a17cf244-2b80-4c92-8855-bba82662a8ae.jpg";
 import "./App.css";
 
 const projects = [
@@ -14,7 +26,8 @@ const projects = [
     title: "Netflix Clone",
     tag: "Full-Stack",
     emoji: "🎬",
-    description: "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
+    description:
+      "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
     tech: ["React", "Node.js", "TMDB API"],
     github: "https://github.com/yourname/netflix-clone",
     demo: "https://netflix-clone.example.com",
@@ -24,7 +37,8 @@ const projects = [
     title: "Live Chat App",
     tag: "Real-time",
     emoji: "💬",
-    description: "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
+    description:
+      "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
     tech: ["React", "Express", "Socket.IO"],
     github: "https://github.com/yourname/live-chat-app",
     demo: "https://live-chat.example.com",
@@ -34,7 +48,8 @@ const projects = [
     title: "Inventory System",
     tag: "Backend",
     emoji: "📦",
-    description: "Role-based inventory management with analytics dashboard and automated stock alerts.",
+    description:
+      "Role-based inventory management with analytics dashboard and automated stock alerts.",
     tech: ["Spring Boot", "MySQL", "Docker"],
     github: "https://github.com/yourname/inventory-system",
     demo: "https://inventory.example.com",
@@ -44,7 +59,8 @@ const projects = [
     title: "Attendance Tracker",
     tag: "API",
     emoji: "📋",
-    description: "Backend-driven attendance tracker with QR validation and export-ready reports.",
+    description:
+      "Backend-driven attendance tracker with QR validation and export-ready reports.",
     tech: ["Python", "FastAPI", "MongoDB"],
     github: "https://github.com/yourname/attendance-tracker",
     demo: "https://attendance.example.com",
@@ -111,10 +127,30 @@ const stats = [
 ];
 
 const processSteps = [
-  { title: "Discover", desc: "Clarify requirements, constraints, and success metrics.", emoji: "🔍", color: "#f97316" },
-  { title: "Design", desc: "Model the data, API contracts, and system architecture.", emoji: "📐", color: "#0d9488" },
-  { title: "Build", desc: "Implement, test, and document reliable backend services.", emoji: "🔧", color: "#8b5cf6" },
-  { title: "Improve", desc: "Monitor, iterate, and optimize performance over time.", emoji: "📈", color: "#ec4899" },
+  {
+    title: "Discover",
+    desc: "Clarify requirements, constraints, and success metrics.",
+    emoji: "🔍",
+    color: "#f97316",
+  },
+  {
+    title: "Design",
+    desc: "Model the data, API contracts, and system architecture.",
+    emoji: "📐",
+    color: "#0d9488",
+  },
+  {
+    title: "Build",
+    desc: "Implement, test, and document reliable backend services.",
+    emoji: "🔧",
+    color: "#8b5cf6",
+  },
+  {
+    title: "Improve",
+    desc: "Monitor, iterate, and optimize performance over time.",
+    emoji: "📈",
+    color: "#ec4899",
+  },
 ];
 
 function useScrollReveal() {
@@ -139,32 +175,41 @@ export default function App() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    document.documentElement.setAttribute(
+      "data-theme",
+      dark ? "dark" : "light"
+    );
   }, [dark]);
 
   useScrollReveal();
 
   return (
     <div className="root">
-
       {/* ─── HEADER ─── */}
       <header className="header">
         <div className="header-inner">
           <a href="#home" className="logo">
-            <span className="logo-mark"><HiOutlineSparkles /></span>
-            <span className="logo-name">Kasun<span className="logo-dot">.</span></span>
+            <span className="logo-name">
+              KIU<span className="logo-dot">.</span>
+            </span>
           </a>
 
           <nav className="desktop-nav">
-            {["about", "skills", "projects", "experience", "contact"].map((n) => (
-              <a key={n} href={`#${n}`} className="nav-link">
-                {n.charAt(0).toUpperCase() + n.slice(1)}
-              </a>
-            ))}
+            {["about", "skills", "projects", "experience", "contact"].map(
+              (n) => (
+                <a key={n} href={`#${n}`} className="nav-link">
+                  {n.charAt(0).toUpperCase() + n.slice(1)}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="header-end">
-            <button className="theme-toggle" onClick={() => setDark((p) => !p)} aria-label="Toggle theme">
+            <button
+              className="theme-toggle"
+              onClick={() => setDark((p) => !p)}
+              aria-label="Toggle theme"
+            >
               {dark ? <FaSun /> : <FaMoon />}
             </button>
             <a href="#contact" className="hire-btn">
@@ -186,12 +231,11 @@ export default function App() {
             <div className="hero-text reveal">
               <div className="avail-badge">
                 <span className="a-dot" />
-                Available for Internship
+                Available
               </div>
 
               <h1 className="h-title">
-                Hi, I'm{" "}
-                <span className="h-name">Kasun</span>
+                Hi, I'm <span className="h-name">Kasun</span>
                 <br />
                 <span className="h-role">
                   Backend <span className="h-squiggle">Developer</span>
@@ -201,8 +245,8 @@ export default function App() {
               <p className="h-body">
                 Third-year ICT undergraduate who loves building{" "}
                 <strong>reliable APIs</strong>, scalable databases, and
-                cloud-ready backend services. Turning complex problems
-                into clean, maintainable solutions.
+                cloud-ready backend services. Turning complex problems into
+                clean, maintainable solutions.
               </p>
 
               <div className="h-cta">
@@ -227,16 +271,16 @@ export default function App() {
 
             {/* Right */}
             <div className="hero-visual reveal">
-              <div className="hero-card">
+              <div className="hero-card hero-card-profile">
                 <div className="hc-shine" />
-                <img src={heroImage} alt="Kasun" className="hero-img" />
-                <div className="hc-focus">
-                  <p className="hcf-label">Focus Areas</p>
-                  <div className="hcf-chips">
-                    {["REST APIs", "Microservices", "Cloud & DevOps", "Security"].map((t) => (
-                      <span key={t} className="hcf-chip">{t}</span>
-                    ))}
-                  </div>
+                <img
+                  src={heroImage}
+                  alt="Kasun Udayanga"
+                  className="hero-img hero-img-profile"
+                />
+                <div className="hero-caption">
+                  <h3>Kasun Udayanga</h3>
+                  <p>ICT Undergraduate • Backend Developer</p>
                 </div>
               </div>
               <div className="hero-minis">
@@ -261,7 +305,11 @@ export default function App() {
             <div className="about-layout">
               <div className="about-left reveal">
                 <span className="eyebrow">About Me</span>
-                <h2 className="sec-title">Building systems<br />that <em>just work</em></h2>
+                <h2 className="sec-title">
+                  Building systems
+                  <br />
+                  that <em>just work</em>
+                </h2>
                 <p className="sec-body">
                   I'm a passionate ICT undergrad who thrives on backend
                   engineering and clean system architecture. I enjoy working
@@ -272,12 +320,18 @@ export default function App() {
                   <div className="a-card">
                     <span className="ac-emoji">🎯</span>
                     <h4>Skills & Interests</h4>
-                    <p>API design, auth flows, microservices, cloud deployment, DevOps automation.</p>
+                    <p>
+                      API design, auth flows, microservices, cloud deployment,
+                      DevOps automation.
+                    </p>
                   </div>
                   <div className="a-card">
                     <span className="ac-emoji">🌱</span>
                     <h4>Career Objective</h4>
-                    <p>Join an ambitious team, contribute to production systems, and grow every day.</p>
+                    <p>
+                      Join an ambitious team, contribute to production systems,
+                      and grow every day.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -287,15 +341,24 @@ export default function App() {
                   <h3>💡 What I Bring</h3>
                   <ul className="brings-list">
                     <li>
-                      <span className="bl-dot" style={{ background: "#0d9488" }} />
+                      <span
+                        className="bl-dot"
+                        style={{ background: "#0d9488" }}
+                      />
                       Backend-first mindset with clean, documented APIs.
                     </li>
                     <li>
-                      <span className="bl-dot" style={{ background: "#f97316" }} />
+                      <span
+                        className="bl-dot"
+                        style={{ background: "#f97316" }}
+                      />
                       Experience collaborating with UI teams and product owners.
                     </li>
                     <li>
-                      <span className="bl-dot" style={{ background: "#8b5cf6" }} />
+                      <span
+                        className="bl-dot"
+                        style={{ background: "#8b5cf6" }}
+                      />
                       Passion for learning cloud-native and DevOps practices.
                     </li>
                   </ul>
@@ -327,7 +390,10 @@ export default function App() {
             <div className="sec-head reveal">
               <span className="eyebrow">Skills</span>
               <h2 className="sec-title">Technical Toolkit</h2>
-              <p className="sec-sub">Languages, frameworks, and tools I use to craft solid backend systems.</p>
+              <p className="sec-sub">
+                Languages, frameworks, and tools I use to craft solid backend
+                systems.
+              </p>
             </div>
 
             <div className="skills-grid">
@@ -340,7 +406,9 @@ export default function App() {
                     style={{ "--c": g.color, animationDelay: `${i * 0.1}s` }}
                   >
                     <div className="sc-header">
-                      <span className="sc-icon"><Icon /></span>
+                      <span className="sc-icon">
+                        <Icon />
+                      </span>
                       <h3>{g.title}</h3>
                     </div>
                     <ul className="sc-list">
@@ -363,7 +431,9 @@ export default function App() {
                   <div key={sk.name} className="strength-row">
                     <div className="sr-top">
                       <span>{sk.name}</span>
-                      <span style={{ color: sk.color, fontWeight: 700 }}>{sk.level}%</span>
+                      <span style={{ color: sk.color, fontWeight: 700 }}>
+                        {sk.level}%
+                      </span>
                     </div>
                     <div className="sr-track">
                       <div
@@ -385,7 +455,9 @@ export default function App() {
               <div>
                 <span className="eyebrow">Projects</span>
                 <h2 className="sec-title">Selected Work</h2>
-                <p className="sec-sub">Backend-focused builds that highlight my technical range.</p>
+                <p className="sec-sub">
+                  Backend-focused builds that highlight my technical range.
+                </p>
               </div>
               <a href="https://github.com/yourname" className="gh-link">
                 <FaGithub /> View All <FaExternalLinkAlt className="xs" />
@@ -407,12 +479,18 @@ export default function App() {
                   <p className="pc-desc">{p.description}</p>
                   <div className="pc-techs">
                     {p.tech.map((t) => (
-                      <span key={t} className="pc-tech">{t}</span>
+                      <span key={t} className="pc-tech">
+                        {t}
+                      </span>
                     ))}
                   </div>
                   <div className="pc-footer">
-                    <a href={p.github} className="pf-link"><FaGithub /> Code</a>
-                    <a href={p.demo} className="pf-link pf-demo"><FaExternalLinkAlt /> Demo</a>
+                    <a href={p.github} className="pf-link">
+                      <FaGithub /> Code
+                    </a>
+                    <a href={p.demo} className="pf-link pf-demo">
+                      <FaExternalLinkAlt /> Demo
+                    </a>
                   </div>
                   <div className="pc-accent-bar" />
                 </article>
@@ -427,7 +505,10 @@ export default function App() {
             <div className="sec-head reveal">
               <span className="eyebrow">Experience</span>
               <h2 className="sec-title">Certifications & Process</h2>
-              <p className="sec-sub">Credentials that reflect continuous learning and a clear way of working.</p>
+              <p className="sec-sub">
+                Credentials that reflect continuous learning and a clear way of
+                working.
+              </p>
             </div>
 
             <div className="cert-grid">
@@ -438,7 +519,9 @@ export default function App() {
                   style={{ "--cc": c.color, animationDelay: `${i * 0.1}s` }}
                 >
                   <span className="cc-emoji">{c.emoji}</span>
-                  <div className="cc-badge"><FaCertificate /> Certified</div>
+                  <div className="cc-badge">
+                    <FaCertificate /> Certified
+                  </div>
                   <h3>{c.title}</h3>
                   <p className="cc-sub">{c.subtitle}</p>
                   <p className="cc-body">{c.body}</p>
@@ -450,9 +533,17 @@ export default function App() {
               <h3 className="pb-title">🗺️ How I Work</h3>
               <div className="pb-grid">
                 {processSteps.map((s, i) => (
-                  <div key={s.title} className="pb-step" style={{ "--psc": s.color }}>
-                    <div className="pbs-num">{String(i + 1).padStart(2, "0")}</div>
-                    <h4 className="pbs-h">{s.emoji} {s.title}</h4>
+                  <div
+                    key={s.title}
+                    className="pb-step"
+                    style={{ "--psc": s.color }}
+                  >
+                    <div className="pbs-num">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <h4 className="pbs-h">
+                      {s.emoji} {s.title}
+                    </h4>
                     <p className="pbs-p">{s.desc}</p>
                   </div>
                 ))}
@@ -467,21 +558,54 @@ export default function App() {
             <div className="contact-layout">
               <div className="contact-left reveal">
                 <span className="eyebrow">Contact</span>
-                <h2 className="sec-title">Let's build something<br /><em>amazing</em> 🚀</h2>
+                <h2 className="sec-title">
+                  Let's build something
+                  <br />
+                  <em>amazing</em> 🚀
+                </h2>
                 <p className="sec-sub">
-                  Have an internship opportunity or backend challenge?
-                  My inbox is always open.
+                  Have an internship opportunity or backend challenge? My inbox
+                  is always open.
                 </p>
 
                 <div className="contact-items">
                   {[
-                    { Icon: FaEnvelope, label: "Email", val: "kasun.dev@email.com", href: "mailto:kasun.dev@email.com", c: "#f97316" },
-                    { Icon: FaPhoneAlt, label: "Phone", val: "+94 77 123 4567", href: "tel:+94771234567", c: "#0d9488" },
-                    { Icon: FaLinkedin, label: "LinkedIn", val: "kasun-udayanga", href: "https://linkedin.com", c: "#0077b5" },
-                    { Icon: FaGithub, label: "GitHub", val: "github.com/yourname", href: "https://github.com", c: "#6b7280" },
+                    {
+                      Icon: FaEnvelope,
+                      label: "Email",
+                      val: "kasun.dev@email.com",
+                      href: "mailto:kasun.dev@email.com",
+                      c: "#f97316",
+                    },
+                    {
+                      Icon: FaPhoneAlt,
+                      label: "Phone",
+                      val: "+94 77 123 4567",
+                      href: "tel:+94771234567",
+                      c: "#0d9488",
+                    },
+                    {
+                      Icon: FaLinkedin,
+                      label: "LinkedIn",
+                      val: "kasun-udayanga",
+                      href: "https://linkedin.com",
+                      c: "#0077b5",
+                    },
+                    {
+                      Icon: FaGithub,
+                      label: "GitHub",
+                      val: "github.com/yourname",
+                      href: "https://github.com",
+                      c: "#6b7280",
+                    },
                   ].map(({ Icon, label, val, href, c }) => (
                     <a key={label} href={href} className="ci-item">
-                      <span className="ci-icon" style={{ background: c + "15", color: c }}><Icon /></span>
+                      <span
+                        className="ci-icon"
+                        style={{ background: c + "15", color: c }}
+                      >
+                        <Icon />
+                      </span>
                       <div>
                         <span className="ci-label">{label}</span>
                         <span className="ci-val">{val}</span>
@@ -506,7 +630,10 @@ export default function App() {
                   </div>
                   <div className="cf-group">
                     <label>Subject</label>
-                    <input type="text" placeholder="Internship / Project Idea" />
+                    <input
+                      type="text"
+                      placeholder="Internship / Project Idea"
+                    />
                   </div>
                   <div className="cf-group">
                     <label>Message</label>
@@ -526,20 +653,36 @@ export default function App() {
           <div className="container">
             <div className="cta-box reveal">
               <div className="cta-blob" />
-              <span className="eyebrow" style={{ color: "#0d9488" }}>Let's Work Together</span>
-              <h2 className="cta-title">Ready to bring your<br />backend ideas to life?</h2>
+              <span className="eyebrow" style={{ color: "#0d9488" }}>
+                Let's Work Together
+              </span>
+              <h2 className="cta-title">
+                Ready to bring your
+                <br />
+                backend ideas to life?
+              </h2>
               <p className="cta-body">
-                Actively seeking internship opportunities to contribute,
-                learn, and grow alongside an ambitious team.
+                Actively seeking internship opportunities to contribute, learn,
+                and grow alongside an ambitious team.
               </p>
               <div className="cta-actions">
-                <a href="#contact" className="btn-primary">Schedule a Call <FaArrowRight /></a>
-                <a href="#projects" className="btn-secondary">View Projects</a>
+                <a href="#contact" className="btn-primary">
+                  Schedule a Call <FaArrowRight />
+                </a>
+                <a href="#projects" className="btn-secondary">
+                  View Projects
+                </a>
               </div>
               <div className="cta-chips">
-                <span><FaUserCheck /> Fast response</span>
-                <span><FaChartLine /> Results-driven</span>
-                <span><FaCloud /> Cloud-ready</span>
+                <span>
+                  <FaUserCheck /> Fast response
+                </span>
+                <span>
+                  <FaChartLine /> Results-driven
+                </span>
+                <span>
+                  <FaCloud /> Cloud-ready
+                </span>
               </div>
             </div>
           </div>
@@ -551,9 +694,15 @@ export default function App() {
         <div className="footer-inner">
           <p>© 2026 Kasun Udayanga · Made with ❤️ in Sri Lanka</p>
           <div className="footer-socials">
-            <a href="https://github.com"><FaGithub /></a>
-            <a href="https://linkedin.com"><FaLinkedin /></a>
-            <a href="mailto:kasun.dev@email.com"><FaEnvelope /></a>
+            <a href="https://github.com">
+              <FaGithub />
+            </a>
+            <a href="https://linkedin.com">
+              <FaLinkedin />
+            </a>
+            <a href="mailto:kasun.dev@email.com">
+              <FaEnvelope />
+            </a>
           </div>
         </div>
       </footer>
