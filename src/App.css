@@ -685,18 +685,17 @@ a {
 .about-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
+  gap: 60px;
   align-items: start;
-  justify-items: center;
+}
+
+.about-right {
+   padding-top: 40px;
 }
 @media (max-width: 900px) {
   .about-layout {
     grid-template-columns: 1fr;
     gap: 40px;
-
-    .hero-visual {
-      padding-top: 0;
-    }
   }
 }
 
@@ -1237,7 +1236,7 @@ a {
 ═══════════════════════════════════════════════════ */
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1.fr;
+  grid-template-columns: 1fr ;
   gap: 64px;
   align-items: start;
 }
@@ -1246,7 +1245,6 @@ a {
 .contact-right {
   align-self: start;
   margin-top: 3px;
-  
 }
 @media (max-width: 900px) {
   .contact-layout {
