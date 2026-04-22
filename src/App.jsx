@@ -238,15 +238,15 @@ export default function App() {
                 Hi, I'm <span className="h-name">Kasun</span>
                 <br />
                 <span className="h-role">
-                  Backend <span className="h-squiggle">Developer</span>
+                  Full-Stack<span className="h-squiggle">Developer</span>
                 </span>
               </h1>
 
               <p className="h-body">
-                Third-year ICT undergraduate who loves building{" "}
-                <strong>reliable APIs</strong>, scalable databases, and
-                cloud-ready backend services. Turning complex problems into
-                clean, maintainable solutions.
+                ICT undergraduate focused on building modern
+                <strong> full-stack web applications</strong> from clean,
+                responsive UIs to secure APIs and scalable databases. I turn
+                ideas into fast, reliable, and user-friendly products.
               </p>
 
               <div className="h-cta">
@@ -280,7 +280,7 @@ export default function App() {
                 />
                 <div className="hero-caption">
                   <h3>Kasun Udayanga</h3>
-                  <p>ICT Undergraduate • Backend Developer</p>
+                  <p>ICT Undergraduate • Full-Stack Developer</p>
                 </div>
               </div>
               <div className="hero-minis">
@@ -291,7 +291,7 @@ export default function App() {
                 </div>
                 <div className="mini">
                   <span className="mini-label">Focus</span>
-                  <span className="mini-val">Backend</span>
+                  <span className="mini-val">Developer</span>
                   <span className="mini-sub">APIs, DBs & cloud</span>
                 </div>
               </div>
@@ -367,10 +367,10 @@ export default function App() {
                   <h3>📌 Quick Facts</h3>
                   <div className="facts-grid">
                     {[
-                      ["Location", "Sri Lanka 🇱🇰"],
+                      ["Location", "Karandeniya  🇱🇰"],
                       ["Availability", "Immediate ✅"],
-                      ["Email", "kasun.dev@email.com"],
-                      ["Focus", "Backend & APIs"],
+                      ["Email", "udayangakasun696@gmail.com"],
+                      ["Focus", "Full-stack & IT related"],
                     ].map(([l, v]) => (
                       <div key={l} className="fact-row">
                         <span className="fact-label">{l}</span>
@@ -564,8 +564,8 @@ export default function App() {
                   <em>amazing</em> 🚀
                 </h2>
                 <p className="sec-sub">
-                  Have an internship opportunity or backend challenge? My inbox
-                  is always open.
+                  Have an Job opportunity or Full-stack challenge? My inbox is
+                  always open.
                 </p>
 
                 <div className="contact-items">
@@ -573,38 +573,41 @@ export default function App() {
                     {
                       Icon: FaEnvelope,
                       label: "Email",
-                      val: "kasun.dev@email.com",
-                      href: "mailto:kasun.dev@email.com",
+                      val: "udayangakasun696@gmail.com",
+                      href: "mailto:udayangakasun696@gmail.com",
                       c: "#f97316",
                     },
                     {
                       Icon: FaPhoneAlt,
                       label: "Phone",
-                      val: "+94 77 123 4567",
-                      href: "tel:+94771234567",
+                      val: "+94 76 585 5386",
+                      href: "tel:+947765855386",
                       c: "#0d9488",
                     },
                     {
                       Icon: FaLinkedin,
                       label: "LinkedIn",
-                      val: "kasun-udayanga",
-                      href: "https://linkedin.com",
+                      val: "kasun Imasha Udayanga",
+                      href: "https://www.linkedin.com/in/kasunimashaudayanga/",
                       c: "#0077b5",
                     },
                     {
                       Icon: FaGithub,
                       label: "GitHub",
-                      val: "github.com/yourname",
-                      href: "https://github.com",
+                      val: "Kasun Udayanga",
+                      href: "https://github.com/KasunUdayanga",
                       c: "#6b7280",
                     },
-                  ].map(({ Icon, label, val, href, c }) => (
+                  ].map(({ label, val, href, c }) => (
                     <a key={label} href={href} className="ci-item">
                       <span
                         className="ci-icon"
                         style={{ background: c + "15", color: c }}
                       >
-                        <Icon />
+                        {label === "Email" && <FaEnvelope />}
+                        {label === "Phone" && <FaPhoneAlt />}
+                        {label === "LinkedIn" && <FaLinkedin />}
+                        {label === "GitHub" && <FaGithub />}
                       </span>
                       <div>
                         <span className="ci-label">{label}</span>
@@ -692,15 +695,15 @@ export default function App() {
       {/* ─── FOOTER ─── */}
       <footer className="footer">
         <div className="footer-inner">
-          <p>© 2026 Kasun Udayanga · Made with ❤️ in Sri Lanka</p>
+          <p>© 2026 Kasun Udayanga </p>
           <div className="footer-socials">
-            <a href="https://github.com">
+            <a href="https://github.com/KasunUdayanga">
               <FaGithub />
             </a>
-            <a href="https://linkedin.com">
+            <a href="https://www.linkedin.com/in/kasunimashaudayanga/">
               <FaLinkedin />
             </a>
-            <a href="mailto:kasun.dev@email.com">
+            <a href="mailto:udayangakasun696@gmail.com">
               <FaEnvelope />
             </a>
           </div>
