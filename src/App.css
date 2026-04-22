@@ -426,7 +426,7 @@ a {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--teal);
+  background: #52ff02;
   animation: pulse 2s infinite;
 }
 @keyframes pulse {

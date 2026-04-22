@@ -29,7 +29,7 @@ const projects = [
     description:
       "Responsive streaming UI with authentication flows, trailer previews, and curated categories.",
     tech: ["React", "Node.js", "TMDB API"],
-    github: "https://github.com/yourname/netflix-clone",
+    github: "https://github.com/kasunudayanga/netflix-clone",
     demo: "https://netflix-clone.example.com",
     color: "#f97316",
   },
@@ -40,7 +40,7 @@ const projects = [
     description:
       "Real-time messaging with typing indicators, file sharing, and online presence tracking.",
     tech: ["React", "Express", "Socket.IO"],
-    github: "https://github.com/yourname/live-chat-app",
+    github: "https://github.com/kasunudayanga/live-chat-app",
     demo: "https://live-chat.example.com",
     color: "#0d9488",
   },
@@ -51,7 +51,7 @@ const projects = [
     description:
       "Role-based inventory management with analytics dashboard and automated stock alerts.",
     tech: ["Spring Boot", "MySQL", "Docker"],
-    github: "https://github.com/yourname/inventory-system",
+    github: "https://github.com/kasunudayanga/inventory-system",
     demo: "https://inventory.example.com",
     color: "#8b5cf6",
   },
@@ -62,7 +62,7 @@ const projects = [
     description:
       "Backend-driven attendance tracker with QR validation and export-ready reports.",
     tech: ["Python", "FastAPI", "MongoDB"],
-    github: "https://github.com/yourname/attendance-tracker",
+    github: "https://github.com/kasunudayanga/attendance-tracker",
     demo: "https://attendance.example.com",
     color: "#ec4899",
   },
@@ -182,6 +182,29 @@ export default function App() {
   }, [dark]);
 
   useScrollReveal();
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+    const subject = formData.get("subject")?.toString().trim();
+    const message = formData.get("message")?.toString().trim();
+
+    const mailSubject = subject || "Portfolio inquiry";
+    const bodyLines = [
+      name ? `Name: ${name}` : null,
+      email ? `Email: ${email}` : null,
+      "",
+      message || "",
+    ].filter(Boolean);
+
+    const mailto = `mailto:udayangakasun696@gmail.com?subject=${encodeURIComponent(
+      mailSubject
+    )}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+    window.location.href = mailto;
+  };
 
   return (
     <div className="root">
@@ -311,7 +334,7 @@ export default function App() {
                   that <em>just work</em>
                 </h2>
                 <p className="sec-body">
-                  I'm a passionate ICT undergrad who thrives on backend
+                  I'm a passionate ICT undergrade who thrives on backend
                   engineering and clean system architecture. I enjoy working
                   with APIs, designing scalable databases, and ensuring
                   performance and security in every solution I build.
@@ -459,7 +482,7 @@ export default function App() {
                   Backend-focused builds that highlight my technical range.
                 </p>
               </div>
-              <a href="https://github.com/yourname" className="gh-link">
+              <a href="https://github.com/KasunUdayanga" className="gh-link">
                 <FaGithub /> View All <FaExternalLinkAlt className="xs" />
               </a>
             </div>
@@ -564,7 +587,7 @@ export default function App() {
                   <em>amazing</em> 🚀
                 </h2>
                 <p className="sec-sub">
-                  Have an Job opportunity or Full-stack challenge? My inbox is
+                  Have an Job opportunity or Developing challenge? My inbox is
                   always open.
                 </p>
 
@@ -581,7 +604,7 @@ export default function App() {
                       Icon: FaPhoneAlt,
                       label: "Phone",
                       val: "+94 76 585 5386",
-                      href: "tel:+947765855386",
+                      href: "tel:+94765855386",
                       c: "#0d9488",
                     },
                     {
@@ -619,28 +642,37 @@ export default function App() {
               </div>
 
               <div className="contact-right reveal">
-                <form className="c-form">
+                <form className="c-form" onSubmit={handleContactSubmit}>
                   <h3>✉️ Drop a Message</h3>
                   <div className="cf-2col">
                     <div className="cf-group">
                       <label>Full Name</label>
-                      <input type="text" placeholder="Your name" />
+                      <input type="text" name="name" placeholder="Your name" />
                     </div>
                     <div className="cf-group">
                       <label>Email</label>
-                      <input type="email" placeholder="you@email.com" />
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="your@email.com"
+                      />
                     </div>
                   </div>
                   <div className="cf-group">
                     <label>Subject</label>
                     <input
                       type="text"
-                      placeholder="Internship / Project Idea"
+                      name="subject"
+                      placeholder="Job or Project Idea"
                     />
                   </div>
                   <div className="cf-group">
                     <label>Message</label>
-                    <textarea rows="4" placeholder="Tell me more..." />
+                    <textarea
+                      rows="4"
+                      name="message"
+                      placeholder="Tell me about..."
+                    />
                   </div>
                   <button type="submit" className="cf-btn">
                     Send Message <FaArrowRight />
