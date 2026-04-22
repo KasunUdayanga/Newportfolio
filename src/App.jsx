@@ -30,7 +30,6 @@ const projects = [
       "MERN e-commerce platform with dynamic product catalog, secure authentication, and payment integration.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     github: "https://github.com/kasunudayanga/techhaven",
-    demo: "https://techhaven.example.com",
     color: "#f59e0b",
   },
   {
@@ -41,16 +40,35 @@ const projects = [
       "Mobile-first chat platform for students with topic-based rooms and real-time messaging.",
     tech: ["React Native", "Expo", "Appwrite"],
     github: "https://github.com/kasunudayanga/studychat",
-    demo: "https://studychat.example.com",
     color: "#2563eb",
+  },
+  {
+    title: "InternHub",
+    tag: "Web Platform",
+    emoji: "🧑‍💼",
+    description:
+      "Internship discovery platform with listings, application tracking, and modern dashboards.",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/KasunUdayanga/InternHub",
+    color: "#22c55e",
+  },
+  {
+    title: "Doctor Appointment System",
+    tag: "HealthTech",
+    emoji: "🩺",
+    description:
+      "Appointment scheduling system with patient records, doctor availability, and admin controls.",
+    tech: ["PHP", "MySQL"],
+    github: "https://github.com/KasunUdayanga/doctorAppoimentSystem",
+    color: "#0ea5e9",
   },
 ];
 
 const certifications = [
   {
-    title: "Meta Front-End & Back-End",
+    title: "Meta Back-Developer",
     subtitle: "Developer Specializations",
-    body: "Comprehensive front-end and back-end specialization covering modern web stacks.",
+    body: "Comprehensive back-end specialization covering modern web stacks.",
     color: "#2563eb",
   },
   {
@@ -76,6 +94,12 @@ const certifications = [
     subtitle: "CICD Pipelines",
     body: "End-to-end deployment of MERN apps with Azure CI/CD automation.",
     color: "#0ea5e9",
+  },
+  {
+    title: "Meta Front-End Developer",
+    subtitle: "Specialization",
+    body: "Advanced front-end specialization covering responsive UI, React, and UX foundations.",
+    color: "#22c55e",
   },
 ];
 
@@ -108,6 +132,8 @@ const skillGroups = [
       "Spring Boot",
       "React Native",
       "Docker",
+      ".NET",
+      "NextJs",
     ],
     color: "#2563eb",
   },
@@ -195,7 +221,6 @@ export default function App() {
               KIU<span className="logo-dot">.</span>
             </span>
           </a>
-
           <nav className="desktop-nav">
             {["about", "skills", "projects", "experience", "contact"].map(
               (n) => (
@@ -259,16 +284,6 @@ export default function App() {
                   Get In Touch
                 </a>
               </div>
-
-              <div className="h-stats">
-                {stats.map((s) => (
-                  <div key={s.label} className="h-stat">
-                    <span className="hs-emoji">{s.emoji}</span>
-                    <strong>{s.value}</strong>
-                    <span>{s.label}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right */}
@@ -300,6 +315,18 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        <div className="container">
+          <div className="h-stats reveal">
+            {stats.map((s) => (
+              <div key={s.label} className="h-stat">
+                <span className="hs-emoji">{s.emoji}</span>
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* ─── ABOUT ─── */}
         <section id="about" className="section">
@@ -492,9 +519,6 @@ export default function App() {
                   <div className="pc-footer">
                     <a href={p.github} className="pf-link">
                       <FaGithub /> Code
-                    </a>
-                    <a href={p.demo} className="pf-link pf-demo">
-                      <FaExternalLinkAlt /> Demo
                     </a>
                   </div>
                   <div className="pc-accent-bar" />
