@@ -317,11 +317,11 @@ export default function App() {
                   Jaffna with a GPA of 3.15/4.0. My focus is full-stack
                   development, cloud computing, and building high-quality
                   RESTful APIs with responsive user interfaces. I also have
-                  internship experience as a Full-Stack Developer at Infinity AI.
+                  internship experience as a Full-Stack Developer at Infinity
+                  AI.
                 </p>
                 <div className="about-cards">
                   <div className="a-card">
-                    <span className="ac-emoji">🎯</span>
                     <h4>Skills & Interests</h4>
                     <p>
                       API design, auth flows, microservices, cloud deployment,
@@ -329,7 +329,6 @@ export default function App() {
                     </p>
                   </div>
                   <div className="a-card">
-                    <span className="ac-emoji">🌱</span>
                     <h4>Career Objective</h4>
                     <p>
                       Join an ambitious team, contribute to production systems,
@@ -341,7 +340,7 @@ export default function App() {
 
               <div className="about-right reveal">
                 <div className="brings-card">
-                  <h3>💡 What I Bring</h3>
+                  <h3> What I Bring</h3>
                   <ul className="brings-list">
                     <li>
                       <span
@@ -367,7 +366,7 @@ export default function App() {
                   </ul>
                 </div>
                 <div className="facts-card">
-                  <h3>📌 Quick Facts</h3>
+                  <h3> Quick Facts</h3>
                   <div className="facts-grid">
                     {[
                       ["Location", "Karandeniya  🇱🇰"],
@@ -572,7 +571,7 @@ export default function App() {
                 <h2 className="sec-title">
                   Let's build something
                   <br />
-                  <em>amazing</em> 🚀
+                  <em>amazing</em>
                 </h2>
                 <p className="sec-sub">
                   Have a job opportunity or full-stack challenge? My inbox is
@@ -685,8 +684,8 @@ export default function App() {
                 mind ideas to life?
               </h2>
               <p className="cta-body">
-                Actively seeking Job opportunities to contribute, learn,
-                and grow alongside an ambitious team.
+                Actively seeking Job opportunities to contribute, learn, and
+                grow alongside an ambitious team.
               </p>
               <div className="cta-actions">
                 <a href="#contact" className="btn-primary">
@@ -698,13 +697,13 @@ export default function App() {
               </div>
               <div className="cta-chips">
                 <span>
-                  <FaUserCheck /> Fast response
+                  <FaUserCheck /> Open to roles
                 </span>
                 <span>
-                  <FaChartLine /> Results-driven
+                  <FaChartLine /> Full-stack focus
                 </span>
                 <span>
-                  <FaCloud /> Cloud-ready
+                  <FaCloud /> Remote-friendly
                 </span>
               </div>
             </div>
