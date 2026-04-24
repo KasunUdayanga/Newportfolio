@@ -4,6 +4,7 @@ import {
   FaLinkedin,
   FaEnvelope,
   FaPhoneAlt,
+  FaWhatsapp,
   FaMoon,
   FaSun,
   FaExternalLinkAlt,
@@ -820,6 +821,15 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <a
+        href="https://wa.me/94765855386"
+        className="whatsapp-float"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+      >
+        <FaWhatsapp />
+      </a>
     </div>
   );
 }
