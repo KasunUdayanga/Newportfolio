@@ -23,17 +23,18 @@ import heroImage from "./assets/a17cf244-2b80-4c92-8855-bba82662a8ae.jpg";
 import "./App.css";
 
 const projects = [
-      {
+  {
     title: "GreenStore",
     tag: "Web Platform",
     emoji: "🛍️",
     description:
-      "E-commerce platform with curated product storefront, detailed product pages, shopping cart checkout with order confirmation, and admin dashboard for product management including add, edit, delete operations and image uploads..",
+      "E-commerce platform with product catalog, shopping cart, checkout system, and admin dashboard for inventory management.",
     tech: ["PHP", "MySQL", "Tailwind CSS"],
     github: "https://github.com/KasunUdayanga/ecommerce-projectphp",
+    live: "https://greenstrore.ct.ws/user-site/?i=1",
     color: "#06b6d4",
   },
-    {
+  {
     title: "InternHub",
     tag: "Web Platform",
     emoji: "🧑‍💼",
@@ -41,6 +42,7 @@ const projects = [
       "Internship discovery platform with listings, application tracking, and modern dashboards.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     github: "https://github.com/KasunUdayanga/InternHub",
+    live: "https://intern-hub-client.vercel.app/",
     color: "#22c55e",
   },
   {
@@ -51,6 +53,7 @@ const projects = [
       "MERN e-commerce platform with dynamic product catalog, secure authentication, and payment integration.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     github: "https://github.com/kasunudayanga/techhaven",
+    live: "https://techhaventcommerce.udayangakasun696.workers.dev/",
     color: "#f59e0b",
   },
   {
@@ -550,6 +553,16 @@ export default function App() {
                     <a href={p.github} className="pf-link">
                       <FaGithub /> Code
                     </a>
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        className="pf-link"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <FaExternalLinkAlt /> Live
+                      </a>
+                    )}
                   </div>
                   <div className="pc-accent-bar" />
                 </article>
