@@ -23,6 +23,26 @@ import heroImage from "./assets/a17cf244-2b80-4c92-8855-bba82662a8ae.jpg";
 import "./App.css";
 
 const projects = [
+      {
+    title: "InternHub",
+    tag: "Web Platform",
+    emoji: "🛍️",
+    description:
+      "E-commerce platform with curated product storefront, detailed product pages, shopping cart checkout with order confirmation, and admin dashboard for product management including add, edit, delete operations and image uploads..",
+    tech: ["PHP", "MySQL", "Tailwind CSS"],
+    github: "https://github.com/KasunUdayanga/ecommerce-projectphp",
+    color: "#06b6d4",
+  },
+    {
+    title: "InternHub",
+    tag: "Web Platform",
+    emoji: "🧑‍💼",
+    description:
+      "Internship discovery platform with listings, application tracking, and modern dashboards.",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/KasunUdayanga/InternHub",
+    color: "#22c55e",
+  },
   {
     title: "TechHaven",
     tag: "Full Stack",
@@ -42,16 +62,6 @@ const projects = [
     tech: ["React Native", "Expo", "Appwrite"],
     github: "https://github.com/kasunudayanga/studychat",
     color: "#2563eb",
-  },
-  {
-    title: "InternHub",
-    tag: "Web Platform",
-    emoji: "🧑‍💼",
-    description:
-      "Internship discovery platform with listings, application tracking, and modern dashboards.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/KasunUdayanga/InternHub",
-    color: "#22c55e",
   },
   {
     title: "Doctor Appointment System",
