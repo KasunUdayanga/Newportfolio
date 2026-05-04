@@ -24,7 +24,7 @@ import "./App.css";
 
 const projects = [
       {
-    title: "InternHub",
+    title: "GreenStore",
     tag: "Web Platform",
     emoji: "🛍️",
     description:
