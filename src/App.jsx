@@ -374,7 +374,7 @@ export default function App() {
                 </h2>
                 <p className="sec-body">
                   I’m a motivated BICT (Hons) graduate at the University of
-                  Jaffna with a GPA of 3.15/4.0. My focus is full-stack
+                  Jaffna with a GPA of 3.21/4.0. My focus is full-stack
                   development, cloud computing, and building high-quality
                   RESTful APIs with responsive user interfaces. I also have
                   internship experience as a Full-Stack Developer at Infinity
