@@ -5,8 +5,6 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaWhatsapp,
-  FaMoon,
-  FaSun,
   FaExternalLinkAlt,
   FaCode,
   FaServer,
@@ -186,6 +184,11 @@ const researchWorks = [
   },
 ];
 
+function getThemeForCurrentTime(date = new Date()) {
+  const hour = date.getHours();
+  return hour >= 6 && hour < 18 ? "light" : "dark";
+}
+
 function useScrollReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
@@ -205,14 +208,22 @@ function useScrollReveal() {
 }
 
 export default function App() {
-  const [dark, setDark] = useState(false);
+  const [theme, setTheme] = useState(() => getThemeForCurrentTime());
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      dark ? "dark" : "light"
-    );
-  }, [dark]);
+    const applyTheme = () => {
+      setTheme(getThemeForCurrentTime());
+    };
+
+    applyTheme();
+    const timer = window.setInterval(applyTheme, 60 * 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useScrollReveal();
 
@@ -265,13 +276,6 @@ export default function App() {
           </nav>
 
           <div className="header-end">
-            <button
-              className="theme-toggle"
-              onClick={() => setDark((p) => !p)}
-              aria-label="Toggle theme"
-            >
-              {dark ? <FaSun /> : <FaMoon />}
-            </button>
             <a href="#contact" className="hire-btn">
               Hire Me <FaArrowRight />
             </a>
