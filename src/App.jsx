@@ -432,7 +432,7 @@ export default function App() {
                       ["Location", "Karandeniya  🇱🇰"],
                       ["Focus", "Full-stack "],
                       ["Education", "BICT (Hons) "],
-                      ["GPA", "3.15 / 4.0"],
+                      ["GPA", "3.21 / 4.0"],
                     ].map(([l, v]) => (
                       <div key={l} className="fact-row">
                         <span className="fact-label">{l}</span>
