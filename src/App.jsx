@@ -29,7 +29,7 @@ const projects = [
       "E-commerce platform with product catalog, shopping cart, checkout system, and admin dashboard for inventory management.",
     tech: ["PHP", "MySQL", "Tailwind CSS"],
     github: "https://github.com/KasunUdayanga/ecommerce-projectphp",
-    live: "https://greenstrore.ct.ws/user-site/?i=1",
+    live: "https://greenstrore.ct.ws/user-site",
     color: "#06b6d4",
   },
   {
